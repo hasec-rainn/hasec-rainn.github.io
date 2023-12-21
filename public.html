@@ -1,0 +1,486 @@
+<style>
+    
+    :root {
+        --g: 1px; /*the gap in the thumb*/
+        --l: 10px; /*line thickness*/
+        --ts: 20px; /*thumb size*/
+        --w: 400px; /*width of the slider*/
+        --h: 30px; /*slider height*/
+        --bw: 425px /*container width for adv search options*/
+    }
+    
+    body {
+        background-color: rgb(255, 255, 255);
+    }
+    
+    h1 {
+        color: rgb(126, 86, 86);
+        margin-left: 20px;
+    }
+
+
+    .tooltip {
+        position: relative;
+        display: inline-block;
+        border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+    }
+
+    /* Tooltip text */
+    .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 120px;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        padding: 5px 0;
+        border-radius: 6px;
+
+        /* Position the tooltip text - see examples below! */
+        position: absolute;
+        z-index: 1;
+    }
+
+    /* Show the tooltip text when you mouse over the tooltip container */
+    .tooltip:hover .tooltiptext {
+        visibility: visible;
+    }
+
+
+
+    .barrier_slider {
+        --tc: #B85555; /*thumb color*/
+        --bc: #B85555; /*background color*/
+        --fc:  #493232; /*foreground color*/
+        appearance: none;
+        background: none;
+        cursor: pointer;
+        overflow: hidden;
+        
+
+        width: var(--w);
+        height: var(--h);
+        border-radius: 42%;
+    }
+
+    .barrier_slider::-webkit-slider-thumb {
+        height: var(--ts);
+        width: var(--ts);
+        aspect-ratio: 1;
+        border-radius: 100%;
+        box-shadow: 0 0 0 50px inset var(--tc);
+        appearance: none;
+
+        border-image-source: linear-gradient(90deg,var(--bc) 50%, var(--fc) 0); 
+        border-image-slice: 1;
+        border-image-width: 0 100vw;
+        border-image-outset: 0 calc(100vw + var(--g));
+
+
+        clip-path: polygon(
+            0     calc(50% + var(--l)/2),
+            -100vw calc(50% + var(--l)/2),
+            -100vw calc(50% - var(--l)/2),
+            0     calc(50% - var(--l)/2),
+            0 0,100% 0,
+            100%  calc(50% - var(--l)/2),
+            100vw calc(50% - var(--l)/2),
+            100vw calc(50% + var(--l)/2),
+            100%  calc(50% + var(--l)/2),
+            100% 100%,0 100%
+        );
+    }
+
+
+
+    .barrier_slider::-moz-range-thumb {
+        height: var(--ts);
+        width: var(--ts);
+        aspect-ratio: 1;
+        border-radius: 100%;
+        box-shadow: 0 0 0 50px inset var(--tc);
+        appearance: none;
+
+        border-image-source: linear-gradient(90deg,var(--bc) 50%, var(--fc) 0); 
+        border-image-slice: 1;
+        border-image-width: 0 100vw;
+        border-image-outset: 0 calc(100vw + var(--g));
+
+
+        clip-path: polygon(
+            0     calc(50% + var(--l)/2),
+            -100vw calc(50% + var(--l)/2),
+            -100vw calc(50% - var(--l)/2),
+            0     calc(50% - var(--l)/2),
+            0 0,100% 0,
+            100%  calc(50% - var(--l)/2),
+            100vw calc(50% - var(--l)/2),
+            100vw calc(50% + var(--l)/2),
+            100%  calc(50% + var(--l)/2),
+            100% 100%,0 100%
+        );
+    }
+
+    .motivator_slider {
+        --tc: #81B855; /*thumb color*/
+        --bc: #81B855; /*background color*/
+        --fc:  #334932; /*foreground color*/
+        appearance: none;
+        background: none;
+        cursor: pointer;
+        overflow: hidden;
+        
+
+        width: var(--w);
+        height: var(--h);
+        border-radius: 42%;
+    }
+
+    .motivator_slider::-webkit-slider-thumb {
+        height: var(--ts);
+        width: var(--ts);
+        aspect-ratio: 1;
+        border-radius: 100%;
+        box-shadow: 0 0 0 50px inset var(--tc);
+        appearance: none;
+
+        border-image-source: linear-gradient(90deg,var(--bc) 50%, var(--fc) 0); 
+        border-image-slice: 1;
+        border-image-width: 0 100vw;
+        border-image-outset: 0 calc(100vw + var(--g));
+
+
+        clip-path: polygon(
+            0     calc(50% + var(--l)/2),
+            -100vw calc(50% + var(--l)/2),
+            -100vw calc(50% - var(--l)/2),
+            0     calc(50% - var(--l)/2),
+            0 0,100% 0,
+            100%  calc(50% - var(--l)/2),
+            100vw calc(50% - var(--l)/2),
+            100vw calc(50% + var(--l)/2),
+            100%  calc(50% + var(--l)/2),
+            100% 100%,0 100%
+        );
+    }
+
+
+
+    .motivator_slider::-moz-range-thumb {
+        height: var(--ts);
+        width: var(--ts);
+        aspect-ratio: 1;
+        border-radius: 100%;
+        box-shadow: 0 0 0 50px inset var(--tc);
+        appearance: none;
+
+        border-image-source: linear-gradient(90deg,var(--bc) 50%, var(--fc) 0); 
+        border-image-slice: 1;
+        border-image-width: 0 100vw;
+        border-image-outset: 0 calc(100vw + var(--g));
+
+
+        clip-path: polygon(
+            0     calc(50% + var(--l)/2),
+            -100vw calc(50% + var(--l)/2),
+            -100vw calc(50% - var(--l)/2),
+            0     calc(50% - var(--l)/2),
+            0 0,100% 0,
+            100%  calc(50% - var(--l)/2),
+            100vw calc(50% - var(--l)/2),
+            100vw calc(50% + var(--l)/2),
+            100%  calc(50% + var(--l)/2),
+            100% 100%,0 100%
+        );
+    }
+
+
+
+    .logistic_slider {
+        --tc: #B0B855; /*thumb color*/
+        --bc: #B0B855; /*background color*/
+        --fc:  #493F32; /*foreground color*/
+        appearance: none;
+        background: none;
+        cursor: pointer;
+        overflow: hidden;
+        
+
+        width: var(--w);
+        height: var(--h);
+        border-radius: 42%;
+    }
+
+    .logistic_slider::-webkit-slider-thumb {
+        height: var(--ts);
+        width: var(--ts);
+        aspect-ratio: 1;
+        border-radius: 100%;
+        box-shadow: 0 0 0 50px inset var(--tc);
+        appearance: none;
+
+        border-image-source: linear-gradient(90deg,var(--bc) 50%, var(--fc) 0); 
+        border-image-slice: 1;
+        border-image-width: 0 100vw;
+        border-image-outset: 0 calc(100vw + var(--g));
+
+
+        clip-path: polygon(
+            0     calc(50% + var(--l)/2),
+            -100vw calc(50% + var(--l)/2),
+            -100vw calc(50% - var(--l)/2),
+            0     calc(50% - var(--l)/2),
+            0 0,100% 0,
+            100%  calc(50% - var(--l)/2),
+            100vw calc(50% - var(--l)/2),
+            100vw calc(50% + var(--l)/2),
+            100%  calc(50% + var(--l)/2),
+            100% 100%,0 100%
+        );
+    }
+
+
+
+    .logistic_slider::-moz-range-thumb {
+        height: var(--ts);
+        width: var(--ts);
+        aspect-ratio: 1;
+        border-radius: 100%;
+        box-shadow: 0 0 0 50px inset var(--tc);
+        appearance: none;
+
+        border-image-source: linear-gradient(90deg,var(--bc) 50%, var(--fc) 0); 
+        border-image-slice: 1;
+        border-image-width: 0 100vw;
+        border-image-outset: 0 calc(100vw + var(--g));
+
+
+        clip-path: polygon(
+            0     calc(50% + var(--l)/2),
+            -100vw calc(50% + var(--l)/2),
+            -100vw calc(50% - var(--l)/2),
+            0     calc(50% - var(--l)/2),
+            0 0,100% 0,
+            100%  calc(50% - var(--l)/2),
+            100vw calc(50% - var(--l)/2),
+            100vw calc(50% + var(--l)/2),
+            100%  calc(50% + var(--l)/2),
+            100% 100%,0 100%
+        );
+    }    
+
+
+    datalist {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        writing-mode: horizontal-tb;
+        width: var(--w);
+        margin-top: 0px;
+    }
+
+    .adv_search {
+        background-color: #5898CF;
+        box-shadow: 0px 0px 0px 10px #3B6AB3;
+        width: var(--bw);
+        color: whitesmoke;
+    }
+
+    .adv_search_option {
+        padding-bottom: 20px;
+    }
+
+    .adv_search_header {
+        width: var(--w);
+        margin: 0px;
+        text-align: center;
+    }
+
+
+</style>
+
+
+<h1>Hello world!</h1>
+
+<div class="adv_search">
+    <div class="adv_search_option">
+        <h3 class="adv_search_header">Health Impact
+            <div class="tooltip">(?)
+                <span class="tooltiptext">The health impact you want your action to have on you and/or others.</span>
+            </div>
+        </h3>
+        <input id="health_impact" type="range" min="0" step="1" max="100" class="motivator_slider"/>
+        <datalist id="health_ticks">
+            <option value="0" label="My Health"></option>
+            <option value="50" label="My Family's Health"></option>
+            <option value="100" label="Global Health"></option>
+        </datalist>
+    </div>
+    <div class="adv_search_option">
+        <h3 class="adv_search_header">Lineage Impact
+            <div class="tooltip">(?)
+                <span class="tooltiptext">The impact you want your action to have on (future) generations.</span>
+            </div>
+        </h3>
+        <input id="lineage_slider" type="range" min="0" step="1" max="100" class="motivator_slider"/>
+        <datalist id="ease_ticks">
+            <option value="0" label="Just Me"></option>
+            <option value="33" label="Children"></option>
+            <option value="66" label="Grandchildren"></option>
+            <option value="100" label="All Future Generations"></option>
+        </datalist>
+    </div>
+    <div class="adv_search_option">
+                <h3 class="adv_search_header">Carbon Impact
+            <div class="tooltip">(?)
+                <span class="tooltiptext">Where you want your action to have the most impact on carbon outputs.</span>
+            </div>
+        </h3>
+        <input id="ei_slider" type="range" min="0" step="1" max="100" class="motivator_slider"/>
+        <datalist id="ei_ticks">
+            <option value="0" label="Local"></option>
+            <option value="25" label="Town/City"></option>
+            <option value="50" label="State"></option>
+            <option value="75" label="National"></option>
+            <option value="100" label="Global"></option>
+        </datalist>
+    </div>
+    <div class="adv_search_option">
+        <h3 class="adv_search_header">Enviornmental Justice
+            <div class="tooltip">(?)
+                <span class="tooltiptext">Where you want your action to yield the most enviornmental justice.</span>
+            </div>
+        </h3>
+        <input id="ej_slider" type="range" min="0" step="1" max="100" class="motivator_slider"/>
+        <datalist id="ej_ticks">
+            <option value="0" label="Local"></option>
+            <option value="25" label="Town/City"></option>
+            <option value="50" label="State"></option>
+            <option value="75" label="National"></option>
+            <option value="100" label="Global"></option>
+        </datalist>
+    </div>
+    <div class="adv_search_option">
+        <h3 class="adv_search_header">Action Range
+            <div class="tooltip">(?)
+                <span class="tooltiptext">How far you would like your action's effects to be felt.</span>
+            </div>
+        </h3>
+        <input id="ar_slider" type="range" min="0" step="1" max="100" class="motivator_slider"/>
+        <datalist id="ar_ticks">
+            <option value="0" label="Local"></option>
+            <option value="25" label="Town/City"></option>
+            <option value="50" label="State"></option>
+            <option value="75" label="National"></option>
+            <option value="100" label="Global"></option>
+        </datalist>
+    </div>
+    <div class="adv_search_option">
+        <h3 class="adv_search_header">Action Location
+            <div class="tooltip">(?)
+                <span class="tooltiptext">Where you would be willing to travel in order to initiate an action.</span>
+            </div>
+        </h3>
+        <input id="al_slider" type="range" min="0" step="1" max="100" class="motivator_slider"/>
+        <datalist id="ei_ticks">
+            <option value="0" label="Local"></option>
+            <option value="25" label="Town/City"></option>
+            <option value="50" label="State"></option>
+            <option value="75" label="National"></option>
+            <option value="100" label="Global"></option>
+        </datalist>
+    </div>
+    <div class="adv_search_option">
+        <h3 class="adv_search_header">Ease
+            <div class="tooltip">(?)
+                <span class="tooltiptext">How easy to complete you would like your action to be.</span>
+            </div>
+        </h3>
+        <input id="al_slider" type="range" min="0" step="1" max="100" class="barrier_slider"/>
+        <datalist id="ei_ticks">
+            <option value="0" label="Very Easy"></option>
+            <option value="25" label="Easy"></option>
+            <option value="50" label="Average"></option>
+            <option value="75" label="Hard"></option>
+            <option value="100" label="Very Hard"></option>
+        </datalist>
+    </div>
+    <div class="adv_search_option">
+        <h3 class="adv_search_header">Skills
+            <div class="tooltip">(?)
+                <span class="tooltiptext">What skills would you like your action to demand of (or teach) you?</span>
+            </div>
+        </h3>
+        <input id="al_slider" type="range" min="0" step="1" max="100" class="barrier_slider"/>
+        <datalist id="ei_ticks">
+            <option value="0" label="No Skills"></option>
+            <option value="50" label="Uses Current Skills"></option>
+            <option value="100" label="Grows Skills"></option>
+        </datalist>
+    </div>
+    <div class="adv_search_option">
+        <h3 class="adv_search_header">Social Acceptability
+            <div class="tooltip">(?)
+                <span class="tooltiptext">How socially acceptable an action is considered by society.</span>
+            </div>
+        </h3>
+        <input id="al_slider" type="range" min="0" step="1" max="100" class="barrier_slider"/>
+        <datalist id="ei_ticks">
+            <option value="0" label="Accepted"></option>
+            <option value="50" label="Neutral"></option>
+            <option value="100" label="Challenged"></option>
+        </datalist>
+    </div>
+    <div class="adv_search_option">
+        <h3 class="adv_search_header">Action Financing
+            <div class="tooltip">(?)
+                <span class="tooltiptext">How much money you would like to spend (or receive) from an action.</span>
+            </div>
+        </h3>
+        <input id="al_slider" type="range" min="0" step="1" max="100" class="barrier_slider"/>
+        <datalist id="ei_ticks">
+            <option value="0" label="Money Back"></option>
+            <option value="50" label="Low Cost"></option>
+            <option value="100" label="High Cost"></option>
+        </datalist>
+    </div>
+    <div class="adv_search_option">
+        <h3 class="adv_search_header">Action Impact
+            <div class="tooltip">(?)
+                <span class="tooltiptext">How much impact, in regards to carbon emissions, would you like your action to have?</span>
+            </div>
+        </h3>
+        <input id="al_slider" type="range" min="0" step="1" max="100" class="logistic_slider"/>
+        <datalist id="ei_ticks">
+            <option value="0" label="Small"></option>
+            <option value="50" label="Medium"></option>
+            <option value="100" label="Large"></option>
+        </datalist>
+    </div>
+    <div class="adv_search_option">
+        <h3 class="adv_search_header">Noticability
+            <div class="tooltip">(?)
+                <span class="tooltiptext">How noticable would you like your action to be?</span>
+            </div>
+        </h3>
+        <input id="al_slider" type="range" min="0" step="1" max="100" class="logistic_slider"/>
+        <datalist id="ei_ticks">
+            <option value="0" label="Private"></option>
+            <option value="25" label="Discrete"></option>
+            <option value="50" label="Friends & Family"></option>
+            <option value="100" label="Very Social"></option>
+        </datalist>
+        <div class="adv_search_option">
+            <h3 class="adv_search_header">Action Sociality
+                <div class="tooltip">(?)
+                    <span class="tooltiptext">How social would you like your action to be?</span>
+                </div>
+            </h3>
+            <input id="al_slider" type="range" min="0" step="1" max="100" class="logistic_slider"/>
+            <datalist id="ei_ticks">
+                <option value="0" label="Private"></option>
+                <option value="50" label="Within my network"></option>
+                <option value="100" label="Meet new people"></option>
+            </datalist>
+        </div>
+    </div>
+</div>
