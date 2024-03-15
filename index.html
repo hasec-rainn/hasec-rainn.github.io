@@ -21,9 +21,10 @@
         --w: 400px; /*width of the slider*/
         --h: 30px; /*slider height*/
         --bw: 425px; /*container width for adv search options*/
-        --bc: #3B6AB3;/* #243844 *Background color in dropdown*/
+        --bc: #3B6AB3;/* #365365; Background color inside the dropdown*/
         --oc: var(--bc); /*Color outlining the main dropdown box*/
         --bcs: #243844; /*background color for sections in the dropdown*/
+        --bcq: #365365; /*background color for individual questions in sections*/
         --tc: white; /*Color of text in dialoge boxes*/
         --b: 10px; /*how thick the outline of the dropdown box is*/
     }
@@ -142,6 +143,15 @@
         padding-left: var(--pl);
     }
 
+    .subsection_option.wiat {
+        background-color: var(--bcq);
+        padding-left: 0px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        border-radius: 10px;
+        margin: 15px;
+    }
+
     .subsection_title {
         width: var(--w);
         margin: 0px;
@@ -151,6 +161,7 @@
     .radio_option {
         display: block;
         padding-top: 10px;
+        padding-left: var(--pl);
     }
 
     /*Below is all CSS related to motivation, barrier, and opportunity sliders*/
@@ -471,7 +482,7 @@
         <br>
         <div id="wiat_section" class="section_questions">
             <!-- Neighborhood information-->
-            <div id="neighborhood_option" class="subsection_option">
+            <div id="neighborhood_option" class="subsection_option wiat">
                 <form id="neighborhood">
                     <h3 class="subsection_title">My neighborhood is...</h3>
                     <div class="radio_option">
@@ -494,7 +505,7 @@
             </div>
 
             <!-- Living situation information-->
-            <div id="living_option" class="subsection_option">
+            <div id="living_option" class="subsection_option wiat">
                 <form id="living">
                     <h3 class="subsection_title">For my living situation, I...</h3>
                     <div class="radio_option">
@@ -525,7 +536,7 @@
             </div>
 
             <!-- Food information-->
-            <div id="food_option" class="subsection_option">
+            <div id="food_option" class="subsection_option wiat">
                 <form id="food">
                     <h3 class="subsection_title">For food, I mostly...</h3>
                     <div class="radio_option">
@@ -552,7 +563,7 @@
             <div id="aq_wiat" class="section_questions">
                 <br>
                 <!-- Eating habits information-->
-                <div id="eat_habits_option" class="subsection_option">
+                <div id="eat_habits_option" class="subsection_option wiat">
                     <form id="eat_habits">
                         <h3 class="subsection_title">For my diet, I would call myself...</h3>
                         <div class="radio_option">
@@ -575,7 +586,7 @@
                 </div>
 
                 <!-- Transportation information-->
-                <div id="transportation_option" class="subsection_option">
+                <div id="transportation_option" class="subsection_option wiat">
                     <form id="transportation">
                         <h3 class="subsection_title">For transportation, I primarily...</h3>
                         <div class="radio_option">
@@ -594,7 +605,7 @@
                 </div>
 
                 <!-- Travel habits information-->
-                <div id="travel_habits_option" class="subsection_option">
+                <div id="travel_habits_option" class="subsection_option wiat">
                     <form id="travel_habits">
                         <h3 class="subsection_title">Regarding traveling, I primarily...</h3>
                         <div class="radio_option">
@@ -613,7 +624,7 @@
                 </div>
 
                 <!-- Heating and Air -->
-                <div id="haa_option" class="subsection_option">
+                <div id="haa_option" class="subsection_option wiat">
                     <form id="haa">
                         <h3 class="subsection_title">For heating, cooling, and air-conditioning, I have...</h3>
                         <div class="radio_option">
