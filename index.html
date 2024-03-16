@@ -746,26 +746,51 @@
                 </div>
             </div>
 
-            <!-- Lineage Impact -->
-            <div class="subsection_option">
-                <div class="tooltip">
-                    <input id="li_checkbox" type="checkbox" class="css-checkbox" checked>
-                    <label for="li_checkbox"></label>
-                    <span class="tooltiptext">Toggles if "Lineage Impact" is factored into your search.</span>
-                </div>
-                <h3 id="li_title" class="subsection_title">Lineage Impact
-                    <div class="tooltip"><i class="fa fa-info-circle" aria-hidden="true"></i>
-                        <span class="tooltiptext">The impact you want your action to have on (future) generations.</span>
+            <h2 class="small_font adv_search_drop_chevron" onclick="toggleDropDown('aq_motivations','null')">Additional Questions</h2>
+            <div id="aq_motivations" class="section_questions">
+                <!-- Lineage Impact -->
+                <div class="subsection_option">
+                    <div class="tooltip">
+                        <input id="li_checkbox" type="checkbox" class="css-checkbox" checked>
+                        <label for="li_checkbox"></label>
+                        <span class="tooltiptext">Toggles if "Lineage Impact" is factored into your search.</span>
                     </div>
-                </h3>
-                <div id="li_slider_composite">
-                    <input id="lineage_impact" type="range" min="0" step="1" max="100" class="motivator_slider"/>
-                    <datalist id="li_list">
-                        <option value="0" label="Just Me"></option>
-                        <option value="33" label="Children"></option>
-                        <option value="66" label="Grandchildren"></option>
-                        <option value="100" label="All Future Generations"></option>
-                    </datalist>
+                    <h3 id="li_title" class="subsection_title">Lineage Impact
+                        <div class="tooltip"><i class="fa fa-info-circle" aria-hidden="true"></i>
+                            <span class="tooltiptext">The impact you want your action to have on (future) generations.</span>
+                        </div>
+                    </h3>
+                    <div id="li_slider_composite">
+                        <input id="lineage_impact" type="range" min="0" step="1" max="100" class="motivator_slider"/>
+                        <datalist id="li_list">
+                            <option value="0" label="Just Me"></option>
+                            <option value="33" label="Children"></option>
+                            <option value="66" label="Grandchildren"></option>
+                            <option value="100" label="All Future Generations"></option>
+                        </datalist>
+                    </div>
+                </div>
+
+                <!-- Biodiversity Impact -->
+                <div class="subsection_option">
+                    <div class="tooltip">
+                        <input id="bi_checkbox" type="checkbox" class="css-checkbox" checked>
+                        <label for="bi_checkbox"></label>
+                        <span class="tooltiptext">Toggles if "Biodiversity Impact" is factored into your search.</span>
+                    </div>
+                    <h3 id="bi_title" class="subsection_title">Biodiversity Impact
+                        <div class="tooltip"><i class="fa fa-info-circle" aria-hidden="true"></i>
+                            <span class="tooltiptext">The impact you want your action to have on biodiversity.</span>
+                        </div>
+                    </h3>
+                    <div id="bi_slider_composite">
+                        <input id="biodiversity_impact" type="range" min="0" step="1" max="100" class="motivator_slider"/>
+                        <datalist id="bi_list">
+                            <option value="0" label="Nearby green spaces"></option>
+                            <option value="50" label="Ecosystem level"></option>
+                            <option value="100" label="Life on Earth"></option>
+                        </datalist>
+                    </div>
                 </div>
             </div>
         </div>
@@ -854,29 +879,31 @@
                 </div>
             </div>
 
-            <!-- Action Location -->
-            <div class="subsection_option">
-                <div class="tooltip">
-                    <input id="al_checkbox" type="checkbox" class="css-checkbox" checked>
-                    <label for="al_checkbox"></label>
-                    <span class="tooltiptext">Toggles if "Location" is factored into your search.</span>
-                </div>
-                <h3 id="al_title" class="subsection_title">Location
-                    <div class="tooltip"><i class="fa fa-info-circle" aria-hidden="true"></i>
-                        <span class="tooltiptext">Where you would be willing to travel in order to initiate an action.</span>
+            <h2 class="small_font adv_search_drop_chevron" onclick="toggleDropDown('aq_challenges','null')">Additional Questions</h2>
+            <div id="aq_challenges" class="section_questions">
+                <!-- Action Location -->
+                <div class="subsection_option">
+                    <div class="tooltip">
+                        <input id="al_checkbox" type="checkbox" class="css-checkbox" checked>
+                        <label for="al_checkbox"></label>
+                        <span class="tooltiptext">Toggles if "Location" is factored into your search.</span>
                     </div>
-                </h3>
-                <div id="al_slider_composite">
-                <input id="action_location" type="range" min="0" step="1" max="100" class="barrier_slider"/>
-                <datalist id="al_list">
-                    <option value="0" label="Local"></option>
-                    <option value="25" label="Town/City"></option>
-                    <option value="50" label="State"></option>
-                    <option value="75" label="National"></option>
-                    <option value="100" label="Global"></option>
-                </datalist>
+                    <h3 id="al_title" class="subsection_title">Location
+                        <div class="tooltip"><i class="fa fa-info-circle" aria-hidden="true"></i>
+                            <span class="tooltiptext">Where you would be willing to travel in order to initiate an action.</span>
+                        </div>
+                    </h3>
+                    <div id="al_slider_composite">
+                    <input id="action_location" type="range" min="0" step="1" max="100" class="barrier_slider"/>
+                    <datalist id="al_list">
+                        <option value="0" label="Local"></option>
+                        <option value="25" label="Town/City"></option>
+                        <option value="50" label="State"></option>
+                        <option value="75" label="National"></option>
+                        <option value="100" label="Global"></option>
+                    </datalist>
+                    </div>
                 </div>
-            </div>
 
             <!-- Action Ease (Mental) -->
             <div class="subsection_option">
@@ -901,6 +928,9 @@
                     </datalist>
                 </div>
             </div>
+            </div>
+
+
         </div>
         <div class="tooltip">
             <i id="challenges_chevron" onclick="toggleDropDown('challenges','challenges_chevron')" class="fa fa-chevron-down adv_search_drop_chevron"></i>
@@ -1068,6 +1098,28 @@
         }
     });
     toggleSlider("li_checkbox", "li_slider_composite","li_title");
+
+
+
+    //Lineage Impact
+    const biodiversity_impact = document.querySelector("#biodiversity_impact");
+    const bi_list = document.getElementById("bi_list").options;
+    biodiversity_impact.addEventListener("click", (event) => {
+
+        //Ensures only one tick is bolded at a time
+        for(i=0; i<bi_list.length; i++) {
+            bi_list[i].classList.remove("bold_tick");
+        }
+
+        if (event.target.value < 33) {
+            bi_list[0].classList.add("bold_tick");
+        } else if (event.target.value < 66) {
+            bi_list[1].classList.add("bold_tick");
+        } else {
+            bi_list[2].classList.add("bold_tick");
+        }
+    });
+    toggleSlider("bi_checkbox", "bi_slider_composite","bi_title");
 
 
 
