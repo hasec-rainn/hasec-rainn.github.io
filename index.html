@@ -16,22 +16,40 @@
     :root {
         --g: 1px; /*the gap in the thumb*/
         --l: 10px; /*line thickness*/
-        --pl: 10px; /*Indent (padding) added to the left side of options in dropdown*/
+        --il: 10px; /*Indent added to the left side of options in dropdown*/
         --ts: 20px; /*thumb size*/
         --w: 400px; /*width of the slider*/
         --h: 30px; /*slider height*/
-        --bw: 425px; /*container width for adv search options*/
+        --bw: 425px; /*container width for adv search sections*/
         --bc: #3B6AB3;/* #365365; Background color inside the dropdown*/
         --oc: var(--bc); /*Color outlining the main dropdown box*/
         --bcs: #243844; /*background color for sections in the dropdown*/
         --bcq: #365365; /*background color for individual questions in sections*/
         --tc: white; /*Color of text in dialoge boxes*/
-        --b: 10px; /*how thick the outline of the dropdown box is*/
+        --b: 20px; /*how thick the outline of the dropdown box is*/
     }
     
-    body {
-        background-color: rgb(255, 255, 255);
+    .tool_title { 
+        text-align: center;
+        /*width of a section plus width of outline on both sides*/
+        width: calc(var(--bw) + var(--b)*2);
+        background-color: var(--bcs);
+        color: white;
     }
+
+    .tool_title.small { 
+        margin-top: 0px;
+        margin-bottom: 0px;
+        padding-bottom: 10px;
+    }
+
+    .tool_title.large {
+        padding-top: 10px;
+        margin-top: 0px; 
+        margin-bottom: 10px;
+    }
+
+    body { background-color: rgb(255, 255, 255); }
 
     .css-checkbox { 
         position: absolute;
@@ -133,27 +151,32 @@
     }
 
     .section_title {
-        width: var(--w);
+        width: var(--bw);
         margin: 0px;
         text-align: center;
     }
 
     .subsection_option {
-        padding-bottom: 60px;
-        padding-left: var(--pl);
+        margin-bottom: 60px;
+        margin-left: var(--il);
+        margin-right: var(--il);
+        padding-bottom: 30px;
+        background-color: var(--bcq);
+        border-radius: 10px;
     }
 
     .subsection_option.wiat {
         background-color: var(--bcq);
         padding-left: 0px;
         padding-top: 20px;
-        padding-bottom: 20px;
+        padding-bottom: 10px;
         border-radius: 10px;
         margin: 15px;
     }
 
     .subsection_title {
-        width: var(--w);
+        /* subtracting --il from the width corrects text centering*/
+        width: calc(var(--w) - var(--il));
         margin: 0px;
         text-align: center;
     }
@@ -161,14 +184,14 @@
     .radio_option {
         display: block;
         padding-top: 10px;
-        padding-left: var(--pl);
+        padding-left: var(--il);
     }
 
     /*Below is all CSS related to motivation, barrier, and opportunity sliders*/
     .barrier_slider {
-        --tc: #B85555; /*thumb color*/
-        --bc: #493232; /*#B85555; /*background color*/
-        --fc:  #493232; /*foreground color*/
+        --tc: #e34646; /*thumb color*/
+        --bc: #B85555; /*#B85555; /*background color*/
+        --fc:  #B85555; /*foreground color*/
         appearance: none;
         background: none;
         cursor: pointer;
@@ -239,9 +262,9 @@
     }
 
     .motivator_slider {
-        --tc: #81B855; /*thumb color*/
-        --bc: #334932; /*#81B855; /*background color*/
-        --fc:  #334932; /*foreground color*/
+        --tc: #46e353; /*thumb color */
+        --bc: #81B855; /*#81B855; /*background color*/
+        --fc:  #81B855; /*foreground color*/
         appearance: none;
         background: none;
         cursor: pointer;
@@ -314,9 +337,9 @@
 
 
     .logistic_slider {
-        --tc: #B0B855; /*thumb color*/
-        --bc: #493F32; /*#B0B855; /*background color*/
-        --fc:  #493F32; /*foreground color*/
+        --tc: #e0e346;  /*thumb color*/
+        --bc: #B0B855; /*#B0B855; /*background color*/
+        --fc: #B0B855; /*foreground color*/
         appearance: none;
         background: none;
         cursor: pointer;
@@ -397,14 +420,11 @@
     }
 
     .adv_search { 
-        display: none; /*for making adv_search a dropdown by default*/
         background-color: var(--bc);
-        box-shadow: 0px 0px 0px var(--b) var(--oc);
         width: var(--bw);
+        border-top: calc(var(--b)*2);
+        border: var(--b) solid var(--oc);
         color: var(--tc);
-        padding: 5px;
-        padding-top: 10px;
-        margin: var(--b);
     }
 
     .adv_search_embeded_dropdown {
@@ -416,11 +436,13 @@
         margin: 0;
     }
 
-    .show { display: block; }
+    /*Must prefix with "div" to inc specificity; else .show is overidden*/
+    div.show { display:block; }
 
+    .hidden { display: none; }
 
     .adv_search_drop_chevron {
-        width: var(--w);
+        width: var(--bw);
         margin: 0px;
         text-align: center;
         font-size: 35px;
@@ -433,6 +455,10 @@
     of each section clickable*/
     .adv_search_drop_chevron.small_font {
         font-size: 22px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        font-style: italic;
+        text-decoration: underline;
     }
 
     .adv_search_drop_chevron:hover {
@@ -472,533 +498,543 @@
 <h1>Hello world!</h1>
 
 <button onclick="toggleDropDown('adv_search_dropdown', null)" class="drop_button">Personalization Tool</button>
-<div id="adv_search_dropdown" class="adv_search">
-
-    <!--Where I am at section-->
-    <div class="section">
-        <div class="section_title">
-            <h1 class="section_title">Where I am at</h1>
-        </div>
-        <br>
-        <div id="wiat_section" class="section_questions">
-            <!-- Neighborhood information-->
-            <div id="neighborhood_option" class="subsection_option wiat">
-                <form id="neighborhood">
-                    <h3 class="subsection_title">My neighborhood is...</h3>
-                    <div class="radio_option">
-                        <input id="urban" name="neighborhood" type="radio" value="URBAN">
-                        <label for="urban">Urban</label>
-                    </div>
-                    <div class="radio_option">
-                        <input id="rural" name="neighborhood" type="radio" value="RURAL">
-                        <label for="rural">Rural</label>
-                    </div>
-                    <div class="radio_option">
-                        <input id="suburban" name="neighborhood" type="radio" value="SUBURBAN">
-                        <label for="suburban">Suburban</label>
-                    </div>
-                    <div class="radio_option">
-                        <input id="neighborhood_other" name="neighborhood" type="radio" value="OTHER_NEIGHBORHOOD">
-                        <label for="neighborhood_other">Other</label>
-                    </div>
-                </form>
-            </div>
-
-            <!-- Living situation information-->
-            <div id="living_option" class="subsection_option wiat">
-                <form id="living">
-                    <h3 class="subsection_title">For my living situation, I...</h3>
-                    <div class="radio_option">
-                        <input id="rent" name="living_situation" type="radio" value="RENT">
-                        <label for="rent">Rent an apartment</label>
-                    </div>
-                    <div class="radio_option">
-                        <input id="yard_home" name="living_situation" type="radio" value="YARD_HOME">
-                        <label for="yard_home">Own a home with a yard</label>
-                    </div>
-                    <div class="radio_option">
-                        <input id="home" name="living_situation" type="radio" value="HOME">
-                        <label for="home">Own a home without a yard</label>
-                    </div>
-                    <div class="radio_option">
-                        <input id="condo" name="living_situation" type="radio" value="CONDO">
-                        <label for="condo">Own a condo</label>
-                    </div>
-                    <div class="radio_option">
-                        <input id="on_campus" name="living_situation" type="radio" value="ON_CAMPUS">
-                        <label for="on_campus">Live on campus</label>
-                    </div>
-                    <div class="radio_option">
-                        <input id="live_family" name="living_situation" type="radio" value="LIVE_FAMILY">
-                        <label for="live_family">Live with family</label>
-                    </div>
-                </form>
-            </div>
-
-            <!-- Food information-->
-            <div id="food_option" class="subsection_option wiat">
-                <form id="food">
-                    <h3 class="subsection_title">For food, I mostly...</h3>
-                    <div class="radio_option">
-                        <input id="garden_food" name="food" type="radio" value="GARDEN_FOOD">
-                        <label for="garden_food">Eat from my own garden or farm</label>
-                    </div>
-                    <div class="radio_option">
-                        <input id="local_food" name="food" type="radio" value="LOCAL_FOOD">
-                        <label for="local_food">Buy food grown and raised locally</label>
-                    </div>
-                    <div class="radio_option">
-                        <input id="organic_food" name="food" type="radio" value="ORGANIC_FOOD">
-                        <label for="organic_food">Buy organic food</label>
-                    </div>
-                    <div class="radio_option">
-                        <input id="standard_food" name="food" type="radio" value="STANDARD_FOOD">
-                        <label for="standard_food">Use a standard grocery store</label>
-                    </div>
-                </form>
-            </div>
-
-            <!-- Displays additional questions for "Where I am at" section-->
-            <h2 class="small_font adv_search_drop_chevron" onclick="toggleDropDown('aq_wiat','null')">Additional Questions</h2>
-            <div id="aq_wiat" class="section_questions">
-                <br>
-                <!-- Eating habits information-->
-                <div id="eat_habits_option" class="subsection_option wiat">
-                    <form id="eat_habits">
-                        <h3 class="subsection_title">For my diet, I would call myself...</h3>
-                        <div class="radio_option">
-                            <input id="habit_vege" name="eat_habits" type="radio" value="HABIT_VEGE">
-                            <label for="habit_vege">Vegetarian</label>
-                        </div>
-                        <div class="radio_option">
-                            <input id="habit_vegan" name="eat_habits" type="radio" value="HABIT_VEGAN">
-                            <label for="habit_vegan">Vegan</label>
-                        </div>
-                        <div class="radio_option">
-                            <input id="habit_flexible" name="eat_habits" type="radio" value="HABIT_FLEXIBLE">
-                            <label for="habit_flexible">Flexible</label>
-                        </div>
-                        <div class="radio_option">
-                            <input id="habit_other" name="eat_habits" type="radio" value="HABIT_OTHER">
-                            <label for="habit_other">Other</label>
-                        </div>
-                    </form>
-                </div>
-
-                <!-- Transportation information-->
-                <div id="transportation_option" class="subsection_option wiat">
-                    <form id="transportation">
-                        <h3 class="subsection_title">For transportation, I primarily...</h3>
-                        <div class="radio_option">
-                            <input id="trans_gas" name="transportation" type="radio" value="TRANS_GAS">
-                            <label for="trans_gas">Use a gas vehicle</label>
-                        </div>
-                        <div class="radio_option">
-                            <input id="trans_better" name="transportation" type="radio" value="TRANS_BETTER">
-                            <label for="trans_better">Use an electric vehicle, a train, or a bus</label>
-                        </div>
-                        <div class="radio_option">
-                            <input id="trans_best" name="transportation" type="radio" value="TRANS_BEST">
-                            <label for="trans_best">Bike or walk</label>
-                        </div>
-                    </form>
-                </div>
-
-                <!-- Travel habits information-->
-                <div id="travel_habits_option" class="subsection_option wiat">
-                    <form id="travel_habits">
-                        <h3 class="subsection_title">Regarding traveling, I primarily...</h3>
-                        <div class="radio_option">
-                            <input id="habit_domestic" name="travel_habits" type="radio" value="HABIT_DOMESTIC">
-                            <label for="habit_domestic">Travel domestically</label>
-                        </div>
-                        <div class="radio_option">
-                            <input id="habit_international" name="travel_habits" type="radio" value="HABIT_INTERNATIONAL">
-                            <label for="habit_international">Travel internationally</label>
-                        </div>
-                        <div class="radio_option">
-                            <input id="habit_no" name="travel_habits" type="radio" value="HABIT_NO">
-                            <label for="habit_no">do not travel</label>
-                        </div>
-                    </form>
-                </div>
-
-                <!-- Heating and Air -->
-                <div id="haa_option" class="subsection_option wiat">
-                    <form id="haa">
-                        <h3 class="subsection_title">For heating, cooling, and air-conditioning, I have...</h3>
-                        <div class="radio_option">
-                            <input id="haa_electric" name="haa" type="radio" value="HAA_ELECTRIC">
-                            <label for="haa_electric">Electric heating and air conditioning</label>
-                        </div>
-                        <div class="radio_option">
-                            <input id="haa_gas" name="haa" type="radio" value="HAA_GAS">
-                            <label for="haa_gas">Gas heating and air conditioning</label>
-                        </div>
-                        <div class="radio_option">
-                            <input id="haa_oil" name="haa" type="radio" value="HAA_OIL">
-                            <label for="haa_oil">Oil heating and air conditioning</label>
-                        </div>
-                        <div class="radio_option">
-                            <input id="haa_wood" name="haa" type="radio" value="HAA_WOOD">
-                            <label for="haa_wood">Wood (or pellet) heating</label>
-                        </div>
-                        <div class="radio_option">
-                            <input id="haa_mix" name="haa" type="radio" value="HAA_MIX">
-                            <label for="haa_oil">A mixture of the above options</label>
-                        </div>
-                        <div class="radio_option">
-                            <input id="haa_none" name="haa" type="radio" value="HAA_NONE">
-                            <label for="haa_none">I have neither heating nor air conditioning</label>
-                        </div>
-                        <div class="radio_option">
-                            <input id="haa_other" name="haa" type="radio" value="HAA_OTHER">
-                            <label for="haa_other">Something else</label>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div class="tooltip">
-            <i id="wiat_chevron" onclick="toggleDropDown('wiat_section','wiat_chevron')" class="fa fa-chevron-down adv_search_drop_chevron"></i>
-            <span class="tooltiptext">Expands and collapses the "Where I am at" section.</span>
-        </div>
+<div id="adv_search_dropdown" class="hidden">
+    <div id="personalization_title" class="tool_title">
+        <h1 class="tool_title large">CSteps Personalization Tool</h1>
+        <h3 class="tool_title small">To help you find your actions</h3>
     </div>
-    
-    <br>
-    <br>
-
-    <!-- Motivations section-->
-    <div class="section">
-        <div class="section_title">
-            <h1 class="section_title">Motivations</h1>
-        </div>
-        <br>
-        <div id="motivators" class="section_questions">
-            <!-- Impact Scale (previously called "Carbon Impact") -->
-            <div class="subsection_option">
-                <div class="tooltip">
-                    <input id="ci_checkbox" type="checkbox" class="css-checkbox" checked>
-                    <label for="ci_checkbox"></label>
-                    <span class="tooltiptext">Toggles if "Impact Scale" is factored into your search.</span>
+    <div id="all_sections" class="adv_search">
+        <!--Where I am at section-->
+        <div class="section">
+            <div class="section_title">
+                <h1 class="section_title">Where I am at</h1>
+            </div>
+            <br>
+            <div id="wiat_section" class="section_questions">
+                <!-- Neighborhood information-->
+                <div id="neighborhood_option" class="subsection_option wiat">
+                    <form id="neighborhood">
+                        <h3 class="subsection_title">My neighborhood is...</h3>
+                        <div class="radio_option">
+                            <input id="urban" name="neighborhood" type="radio" value="URBAN">
+                            <label for="urban">Urban</label>
+                        </div>
+                        <div class="radio_option">
+                            <input id="rural" name="neighborhood" type="radio" value="RURAL">
+                            <label for="rural">Rural</label>
+                        </div>
+                        <div class="radio_option">
+                            <input id="suburban" name="neighborhood" type="radio" value="SUBURBAN">
+                            <label for="suburban">Suburban</label>
+                        </div>
+                        <div class="radio_option">
+                            <input id="neighborhood_other" name="neighborhood" type="radio" value="OTHER_NEIGHBORHOOD">
+                            <label for="neighborhood_other">Other</label>
+                        </div>
+                    </form>
                 </div>
-                <h3 id="ci_title" class="subsection_title">Impact Scale
-                    <div class="tooltip"><i class="fa fa-info-circle" aria-hidden="true"></i>
-                        <span class="tooltiptext">The scale at which you want to impact emissions.</span>
+
+                <!-- Living situation information-->
+                <div id="living_option" class="subsection_option wiat">
+                    <form id="living">
+                        <h3 class="subsection_title">For my living situation, I...</h3>
+                        <div class="radio_option">
+                            <input id="rent" name="living_situation" type="radio" value="RENT">
+                            <label for="rent">Rent an apartment</label>
+                        </div>
+                        <div class="radio_option">
+                            <input id="yard_home" name="living_situation" type="radio" value="YARD_HOME">
+                            <label for="yard_home">Own a home with a yard</label>
+                        </div>
+                        <div class="radio_option">
+                            <input id="home" name="living_situation" type="radio" value="HOME">
+                            <label for="home">Own a home without a yard</label>
+                        </div>
+                        <div class="radio_option">
+                            <input id="condo" name="living_situation" type="radio" value="CONDO">
+                            <label for="condo">Own a condo</label>
+                        </div>
+                        <div class="radio_option">
+                            <input id="on_campus" name="living_situation" type="radio" value="ON_CAMPUS">
+                            <label for="on_campus">Live on campus</label>
+                        </div>
+                        <div class="radio_option">
+                            <input id="live_family" name="living_situation" type="radio" value="LIVE_FAMILY">
+                            <label for="live_family">Live with family</label>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Food information-->
+                <div id="food_option" class="subsection_option wiat">
+                    <form id="food">
+                        <h3 class="subsection_title">For food, I mostly...</h3>
+                        <div class="radio_option">
+                            <input id="garden_food" name="food" type="radio" value="GARDEN_FOOD">
+                            <label for="garden_food">Eat from my own garden or farm</label>
+                        </div>
+                        <div class="radio_option">
+                            <input id="local_food" name="food" type="radio" value="LOCAL_FOOD">
+                            <label for="local_food">Buy food grown and raised locally</label>
+                        </div>
+                        <div class="radio_option">
+                            <input id="organic_food" name="food" type="radio" value="ORGANIC_FOOD">
+                            <label for="organic_food">Buy organic food</label>
+                        </div>
+                        <div class="radio_option">
+                            <input id="standard_food" name="food" type="radio" value="STANDARD_FOOD">
+                            <label for="standard_food">Use a standard grocery store</label>
+                        </div>
+                    </form>
+                </div>
+                <br>
+                <!-- Displays additional questions for "Where I am at" section-->
+                <h2 class="small_font adv_search_drop_chevron" onclick="toggleDropDown('aq_wiat','null')">Additional Questions</h2>
+                <div id="aq_wiat" class="section_questions">
+                    <br>
+                    <!-- Eating habits information-->
+                    <div id="eat_habits_option" class="subsection_option wiat">
+                        <form id="eat_habits">
+                            <h3 class="subsection_title">For my diet, I would call myself...</h3>
+                            <div class="radio_option">
+                                <input id="habit_vege" name="eat_habits" type="radio" value="HABIT_VEGE">
+                                <label for="habit_vege">Vegetarian</label>
+                            </div>
+                            <div class="radio_option">
+                                <input id="habit_vegan" name="eat_habits" type="radio" value="HABIT_VEGAN">
+                                <label for="habit_vegan">Vegan</label>
+                            </div>
+                            <div class="radio_option">
+                                <input id="habit_flexible" name="eat_habits" type="radio" value="HABIT_FLEXIBLE">
+                                <label for="habit_flexible">Flexible / Omnivore</label>
+                            </div>
+                            <div class="radio_option">
+                                <input id="habit_other" name="eat_habits" type="radio" value="HABIT_OTHER">
+                                <label for="habit_other">Other</label>
+                            </div>
+                        </form>
                     </div>
-                </h3>
-                <div id="ci_slider_composite">
-                    <input id="carbon_impact" type="range" min="0" step="1" max="100" class="motivator_slider"/>
-                    <datalist id="ci_list">
-                        <option value="0" label="Local"></option>
-                        <option value="25" label="Town/City"></option>
-                        <option value="50" label="State"></option>
-                        <option value="75" label="National"></option>
-                        <option value="100" label="Global"></option>
-                    </datalist>
+
+                    <!-- Transportation information-->
+                    <div id="transportation_option" class="subsection_option wiat">
+                        <form id="transportation">
+                            <h3 class="subsection_title">For transportation, I primarily...</h3>
+                            <div class="radio_option">
+                                <input id="trans_gas" name="transportation" type="radio" value="TRANS_GAS">
+                                <label for="trans_gas">Use a gas vehicle</label>
+                            </div>
+                            <div class="radio_option">
+                                <input id="trans_hybrid" name="transportation" type="radio" value="TRANS_HYBRID">
+                                <label for="trans_hybrid">Use a hybrid vehicle</label>
+                            </div>
+                            <div class="radio_option">
+                                <input id="trans_better" name="transportation" type="radio" value="TRANS_BETTER">
+                                <label for="trans_better">Use an electric vehicle, a train, or a bus</label>
+                            </div>
+                            <div class="radio_option">
+                                <input id="trans_best" name="transportation" type="radio" value="TRANS_BEST">
+                                <label for="trans_best">Bike or walk</label>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Travel habits information-->
+                    <div id="travel_habits_option" class="subsection_option wiat">
+                        <form id="travel_habits">
+                            <h3 class="subsection_title">Regarding traveling, I primarily...</h3>
+                            <div class="radio_option">
+                                <input id="habit_domestic" name="travel_habits" type="radio" value="HABIT_DOMESTIC">
+                                <label for="habit_domestic">Travel domestically</label>
+                            </div>
+                            <div class="radio_option">
+                                <input id="habit_international" name="travel_habits" type="radio" value="HABIT_INTERNATIONAL">
+                                <label for="habit_international">Travel internationally</label>
+                            </div>
+                            <div class="radio_option">
+                                <input id="habit_no" name="travel_habits" type="radio" value="HABIT_NO">
+                                <label for="habit_no">Do not travel</label>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Heating and Air -->
+                    <div id="haa_option" class="subsection_option wiat">
+                        <form id="haa">
+                            <h3 class="subsection_title">For heating, cooling, and air-conditioning, I have...</h3>
+                            <div class="radio_option">
+                                <input id="haa_electric" name="haa" type="checkbox" value="HAA_ELECTRIC">
+                                <label for="haa_electric">Electric heating and air conditioning</label>
+                            </div>
+                            <div class="radio_option">
+                                <input id="haa_gas" name="haa" type="checkbox" value="HAA_GAS">
+                                <label for="haa_gas">Gas heating and air conditioning</label>
+                            </div>
+                            <div class="radio_option">
+                                <input id="haa_oil" name="haa" type="checkbox" value="HAA_OIL">
+                                <label for="haa_oil">Oil heating and air conditioning</label>
+                            </div>
+                            <div class="radio_option">
+                                <input id="haa_wood" name="haa" type="checkbox" value="HAA_WOOD">
+                                <label for="haa_wood">Wood (or pellet) heating</label>
+                            </div>
+                            <div class="radio_option">
+                                <input id="haa_other" name="haa" type="checkbox" value="HAA_OTHER">
+                                <label for="haa_other">Something else</label>
+                            </div>
+                            <div class="radio_option">
+                                <input id="haa_none" name="haa" type="checkbox" value="HAA_NONE">
+                                <label for="haa_none">I have neither heating nor air conditioning</label>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="tooltip">
+                <i id="wiat_chevron" onclick="toggleDropDown('wiat_section','wiat_chevron')" class="fa fa-chevron-down adv_search_drop_chevron"></i>
+                <span class="tooltiptext">Expands and collapses the "Where I am at" section.</span>
+            </div>
+        </div>
+        
+        <br>
+        <br>
+
+        <!-- Motivations section-->
+        <div class="section">
+            <div class="section_title">
+                <h1 class="section_title">Motivations</h1>
+            </div>
+            <div id="motivators" class="section_questions">
+                <h3 class="section_title subtitle">Select any topics that interest you</h3>
+                <br>
+                <br>
+                <!-- Impact Scale (previously called "Carbon Impact") -->
+                <div class="subsection_option">
+                    <div class="tooltip">
+                        <input id="ci_checkbox" type="checkbox" class="css-checkbox" checked>
+                        <label for="ci_checkbox"></label>
+                        <span class="tooltiptext">Toggles if "Impact Scale" is factored into your search.</span>
+                    </div>
+                    <h3 id="ci_title" class="subsection_title">Your Impact on Emissions
+                        <div class="tooltip"><i class="fa fa-info-circle" aria-hidden="true"></i>
+                            <span class="tooltiptext">The scale at which you want to impact emissions.</span>
+                        </div>
+                    </h3>
+                    <div id="ci_slider_composite">
+                        <input id="carbon_impact" type="range" min="0" step="1" max="100" class="motivator_slider"/>
+                        <datalist id="ci_list">
+                            <option value="0" label="Local"></option>
+                            <option value="25" label="Town/City"></option>
+                            <option value="50" label="State"></option>
+                            <option value="75" label="National"></option>
+                            <option value="100" label="Global"></option>
+                        </datalist>
+                    </div>
+                    
+                </div>
+
+                <!-- Environmental Justice -->
+                <div class="subsection_option">
+                    <div class="tooltip">
+                        <input id="ej_checkbox" type="checkbox" class="css-checkbox" checked>
+                        <label for="ej_checkbox"></label>
+                        <span class="tooltiptext">Toggles if "Environmental Justice Impact" is factored into your search.</span>
+                    </div>
+                    <h3 id="ej_title" class="subsection_title">I'm into Enviornmental Justice at...
+                        <div class="tooltip"><i class="fa fa-info-circle" aria-hidden="true"></i>
+                            <span class="tooltiptext">Where you want your action to yield the most enviornmental justice.</span>
+                        </div>
+                    </h3>
+                    <div id="ej_slider_composite">
+                        <input id="enviornmental_justice" type="range" min="0" step="1" max="100" class="motivator_slider"/>
+                        <datalist id="ej_list">
+                            <option value="0" label="Local"></option>
+                            <option value="25" label="Town/City"></option>
+                            <option value="50" label="State"></option>
+                            <option value="75" label="National"></option>
+                            <option value="100" label="Global"></option>
+                        </datalist>
+                    </div>
+                </div>
+
+                <!-- Health Impact -->
+                <div class="subsection_option">
+                    <div class="tooltip">
+                        <input id="hi_checkbox" type="checkbox" class="css-checkbox" checked>
+                        <label for="hi_checkbox"></label>
+                        <span class="tooltiptext">Toggles if "Health Impact" is factored into your search.</span>
+                    </div>
+                    <h3 id="hi_title" class="subsection_title">I Want to Impact the Health of...
+                        <div class="tooltip"><i class="fa fa-info-circle" aria-hidden="true"></i>
+                            <span class="tooltiptext">The health impact you want your action to have on you and/or others.</span>
+                        </div>
+                    </h3>
+                    <div id="hi_slider_composite" class="">
+                        <input id="health_impact" type="range" min="0" step="1" max="100" class="motivator_slider"/>
+                        <datalist id="hi_list">
+                            <option value="0" label="My Health"></option>
+                            <option value="50" label="My Family's Health"></option>
+                            <option value="100" label="Global Health"></option>
+                        </datalist>
+                    </div>
+                </div>
+
+                <h2 class="small_font adv_search_drop_chevron" onclick="toggleDropDown('aq_motivations','null')">Additional Questions</h2>
+                <div id="aq_motivations" class="section_questions">
+                    <!-- Lineage Impact -->
+                    <div class="subsection_option">
+                        <div class="tooltip">
+                            <input id="li_checkbox" type="checkbox" class="css-checkbox" checked>
+                            <label for="li_checkbox"></label>
+                            <span class="tooltiptext">Toggles if "Lineage Impact" is factored into your search.</span>
+                        </div>
+                        <h3 id="li_title" class="subsection_title">For Which Generation?
+                            <div class="tooltip"><i class="fa fa-info-circle" aria-hidden="true"></i>
+                                <span class="tooltiptext">The impact you want your action to have on (future) generations.</span>
+                            </div>
+                        </h3>
+                        <div id="li_slider_composite">
+                            <input id="lineage_impact" type="range" min="0" step="1" max="100" class="motivator_slider"/>
+                            <datalist id="li_list">
+                                <option value="0" label="Just Me"></option>
+                                <option value="33" label="Children"></option>
+                                <option value="66" label="Grandchildren"></option>
+                                <option value="100" label="All Future Generations"></option>
+                            </datalist>
+                        </div>
+                    </div>
+
+                    <!-- Biodiversity Impact -->
+                    <div class="subsection_option">
+                        <div class="tooltip">
+                            <input id="bi_checkbox" type="checkbox" class="css-checkbox" checked>
+                            <label for="bi_checkbox"></label>
+                            <span class="tooltiptext">Toggles if "Biodiversity Impact" is factored into your search.</span>
+                        </div>
+                        <h3 id="bi_title" class="subsection_title">Biodiversity Impact
+                            <div class="tooltip"><i class="fa fa-info-circle" aria-hidden="true"></i>
+                                <span class="tooltiptext">The impact you want your action to have on biodiversity.</span>
+                            </div>
+                        </h3>
+                        <div id="bi_slider_composite">
+                            <input id="biodiversity_impact" type="range" min="0" step="1" max="100" class="motivator_slider"/>
+                            <datalist id="bi_list">
+                                <option value="0" label="Nearby green spaces"></option>
+                                <option value="50" label="Ecosystem level"></option>
+                                <option value="100" label="Life on Earth"></option>
+                            </datalist>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tooltip">
+                <i id="motivators_chevron" onclick="toggleDropDown('motivators','motivators_chevron')" class="fa fa-chevron-down adv_search_drop_chevron"></i>
+                <span class="tooltiptext">Expands and collapses the "Motivations" section.</span>
+            </div>
+        </div>
+
+        <br>
+        <br>
+
+        <!-- Challenges section-->
+        <div class="section">
+            <div class="section_title">
+                <h1 class="section_title">Challenges</h1>
+            </div>
+            <div id="challenges" class="section_questions">
+                <h3 class="section_title subtitle">Select any challenges you're willing to tackle</h3>
+                <br>
+                <br>
+                <!-- Action Ease -->
+                <div class="subsection_option">
+                    <div class="tooltip">
+                        <input id="e_checkbox" type="checkbox" class="css-checkbox" checked>
+                        <label for="e_checkbox"></label>
+                        <span class="tooltiptext">Toggles if "Ease" is factored into your search.</span>
+                    </div>
+                    <h3 id="e_title" class="subsection_title">Ease (Time Commitment)
+                        <div class="tooltip"><i class="fa fa-info-circle" aria-hidden="true"></i>
+                            <span class="tooltiptext">The ease of the action, in regards to how much time it demands. A more difficult action demands more time.</span>
+                        </div>
+                    </h3>
+                    <div id="e_slider_composite">
+                        <input id="ease" type="range" min="0" step="1" max="100" class="barrier_slider"/>
+                        <datalist id="e_list">
+                            <option value="0" label="Quick"></option>
+                            <option value="33" label="Low"></option>
+                            <option value="66" label="Medium"></option>
+                            <option value="100" label="Long"></option>
+                        </datalist>
+                    </div>
                 </div>
                 
-            </div>
-
-            <!-- Environmental Justice -->
-            <div class="subsection_option">
-                <div class="tooltip">
-                    <input id="ej_checkbox" type="checkbox" class="css-checkbox" checked>
-                    <label for="ej_checkbox"></label>
-                    <span class="tooltiptext">Toggles if "Environmental Justice Impact" is factored into your search.</span>
-                </div>
-                <h3 id="ej_title" class="subsection_title">Enviornmental Justice
-                    <div class="tooltip"><i class="fa fa-info-circle" aria-hidden="true"></i>
-                        <span class="tooltiptext">Where you want your action to yield the most enviornmental justice.</span>
-                    </div>
-                </h3>
-                <div id="ej_slider_composite">
-                    <input id="enviornmental_justice" type="range" min="0" step="1" max="100" class="motivator_slider"/>
-                    <datalist id="ej_list">
-                        <option value="0" label="Local"></option>
-                        <option value="25" label="Town/City"></option>
-                        <option value="50" label="State"></option>
-                        <option value="75" label="National"></option>
-                        <option value="100" label="Global"></option>
-                    </datalist>
-                </div>
-            </div>
-
-            <!-- Health Impact -->
-            <div class="subsection_option">
-                <div class="tooltip">
-                    <input id="hi_checkbox" type="checkbox" class="css-checkbox" checked>
-                    <label for="hi_checkbox"></label>
-                    <span class="tooltiptext">Toggles if "Health Impact" is factored into your search.</span>
-                </div>
-                <h3 id="hi_title" class="subsection_title">Health Impact
-                    <div class="tooltip"><i class="fa fa-info-circle" aria-hidden="true"></i>
-                        <span class="tooltiptext">The health impact you want your action to have on you and/or others.</span>
-                    </div>
-                </h3>
-                <div id="hi_slider_composite" class="">
-                    <input id="health_impact" type="range" min="0" step="1" max="100" class="motivator_slider"/>
-                    <datalist id="hi_list">
-                        <option value="0" label="My Health"></option>
-                        <option value="50" label="My Family's Health"></option>
-                        <option value="100" label="Global Health"></option>
-                    </datalist>
-                </div>
-            </div>
-
-            <h2 class="small_font adv_search_drop_chevron" onclick="toggleDropDown('aq_motivations','null')">Additional Questions</h2>
-            <div id="aq_motivations" class="section_questions">
-                <!-- Lineage Impact -->
+                <!-- Action Financing -->
                 <div class="subsection_option">
                     <div class="tooltip">
-                        <input id="li_checkbox" type="checkbox" class="css-checkbox" checked>
-                        <label for="li_checkbox"></label>
-                        <span class="tooltiptext">Toggles if "Lineage Impact" is factored into your search.</span>
+                        <input id="af_checkbox" type="checkbox" class="css-checkbox" checked>
+                        <label for="af_checkbox"></label>
+                        <span class="tooltiptext">Toggles if "Financing" is factored into your search.</span>
                     </div>
-                    <h3 id="li_title" class="subsection_title">Lineage Impact
+                    <h3 id="af_title" class="subsection_title">Financing
                         <div class="tooltip"><i class="fa fa-info-circle" aria-hidden="true"></i>
-                            <span class="tooltiptext">The impact you want your action to have on (future) generations.</span>
+                            <span class="tooltiptext">How much money you would like to spend (or receive) from an action.</span>
                         </div>
                     </h3>
-                    <div id="li_slider_composite">
-                        <input id="lineage_impact" type="range" min="0" step="1" max="100" class="motivator_slider"/>
-                        <datalist id="li_list">
-                            <option value="0" label="Just Me"></option>
-                            <option value="33" label="Children"></option>
-                            <option value="66" label="Grandchildren"></option>
-                            <option value="100" label="All Future Generations"></option>
+                    <div id="af_slider_composite">
+                        <input id="action_financing" type="range" min="0" step="1" max="100" class="barrier_slider"/>
+                        <datalist id="af_list">
+                            <option value="0" label="Money Back"></option>
+                            <option value="33" label="No Cost"></option>
+                            <option value="66" label="Low Cost (<$100)"></option>
+                            <option value="100" label="High Cost"></option>
                         </datalist>
                     </div>
                 </div>
 
-                <!-- Biodiversity Impact -->
+                <!-- Social Acceptability -->
                 <div class="subsection_option">
                     <div class="tooltip">
-                        <input id="bi_checkbox" type="checkbox" class="css-checkbox" checked>
-                        <label for="bi_checkbox"></label>
-                        <span class="tooltiptext">Toggles if "Biodiversity Impact" is factored into your search.</span>
+                        <input id="sa_checkbox" type="checkbox" class="css-checkbox" checked>
+                        <label for="sa_checkbox"></label>
+                        <span class="tooltiptext">Toggles if "Social Acceptability" is factored into your search.</span>
                     </div>
-                    <h3 id="bi_title" class="subsection_title">Biodiversity Impact
+                    <h3 id="sa_title" class="subsection_title">Social Acceptability
                         <div class="tooltip"><i class="fa fa-info-circle" aria-hidden="true"></i>
-                            <span class="tooltiptext">The impact you want your action to have on biodiversity.</span>
+                            <span class="tooltiptext">How socially acceptable an action is considered by society.</span>
                         </div>
                     </h3>
-                    <div id="bi_slider_composite">
-                        <input id="biodiversity_impact" type="range" min="0" step="1" max="100" class="motivator_slider"/>
-                        <datalist id="bi_list">
-                            <option value="0" label="Nearby green spaces"></option>
-                            <option value="50" label="Ecosystem level"></option>
-                            <option value="100" label="Life on Earth"></option>
+                    <div id="sa_slider_composite">
+                        <input id="social_acceptability" type="range" min="0" step="1" max="100" class="barrier_slider"/>
+                        <datalist id="sa_list">
+                            <option value="0" label="Private"></option>
+                            <option value="25" label="Accepted"></option>
+                            <option value="75" label="Neutral"></option>
+                            <option value="100" label="Challenged"></option>
+                        </datalist>
+                    </div>
+                </div>
+
+                <h2 class="small_font adv_search_drop_chevron" onclick="toggleDropDown('aq_challenges','null')">Additional Questions</h2>
+                <div id="aq_challenges" class="section_questions">
+                    <!-- Action Location -->
+                    <div class="subsection_option">
+                        <div class="tooltip">
+                            <input id="al_checkbox" type="checkbox" class="css-checkbox" checked>
+                            <label for="al_checkbox"></label>
+                            <span class="tooltiptext">Toggles if "Location" is factored into your search.</span>
+                        </div>
+                        <h3 id="al_title" class="subsection_title">Location
+                            <div class="tooltip"><i class="fa fa-info-circle" aria-hidden="true"></i>
+                                <span class="tooltiptext">Where you would be willing to travel in order to initiate an action.</span>
+                            </div>
+                        </h3>
+                        <div id="al_slider_composite">
+                        <input id="action_location" type="range" min="0" step="1" max="100" class="barrier_slider"/>
+                        <datalist id="al_list">
+                            <option value="0" label="Local"></option>
+                            <option value="25" label="Town/City"></option>
+                            <option value="50" label="State"></option>
+                            <option value="75" label="National"></option>
+                            <option value="100" label="Global"></option>
+                        </datalist>
+                        </div>
+                    </div>
+
+                <!-- Action Ease (Mental) -->
+                <div class="subsection_option">
+                    <div class="tooltip">
+                        <input id="me_checkbox" type="checkbox" class="css-checkbox" checked>
+                        <label for="me_checkbox"></label>
+                        <span class="tooltiptext">Toggles if Action Ease (Mental) is factored into your search.</span>
+                    </div>
+                    <h3 id="me_title" class="subsection_title">Action Ease (Mental)
+                        <div class="tooltip"><i class="fa fa-info-circle" aria-hidden="true"></i>
+                            <span class="tooltiptext">How challenging would you like your actions to be?</span>
+                        </div>
+                    </h3>
+                    <div id="me_slider_composite">
+                        <input id="mental_ease" type="range" min="0" step="1" max="100" class="barrier_slider"/>
+                        <datalist id="ar_list">
+                            <option value="0" label="Very Easy"></option>
+                            <option value="25" label="Easy"></option>
+                            <option value="50" label="Medium"></option>
+                            <option value="75" label="Hard"></option>
+                            <option value="100" label="Very Hard"></option>
+                        </datalist>
+                    </div>
+                </div>
+                </div>
+
+
+            </div>
+            <div class="tooltip">
+                <i id="challenges_chevron" onclick="toggleDropDown('challenges','challenges_chevron')" class="fa fa-chevron-down adv_search_drop_chevron"></i>
+                <span class="tooltiptext">Expands and collapses the "Challenges" section.</span>
+            </div>
+        </div>
+
+        <br>
+        <br>
+
+        <!-- Opportunities section-->
+        <div class="section">
+            <div class="section_title">
+                <h1 class="section_title">Opportunities</h1>
+            </div>
+            <div id="opportunities" class="section_questions">
+                <h3 class="section_title subtitle">Select any opportunities you'd enjoy</h3>
+                <br>
+                <br>
+                <!-- Sociality -->
+                <div class="subsection_option">
+                    <div class="tooltip">
+                        <input id="s_checkbox" type="checkbox" class="css-checkbox" checked>
+                        <label for="s_checkbox"></label>
+                        <span class="tooltiptext">Toggles if "Sociality" is factored into your search.</span>
+                    </div>
+                    <h3 id="s_title" class="subsection_title">Sociality
+                        <div class="tooltip"><i class="fa fa-info-circle" aria-hidden="true"></i>
+                            <span class="tooltiptext">How social would you like your action to be?</span>
+                        </div>
+                    </h3>
+                    <div id="s_slider_composite">
+                        <input id="action_sociality" type="range" min="0" step="1" max="100" class="logistic_slider"/>
+                        <datalist id="s_list">
+                            <option value="0" label="Private"></option>
+                            <option value="50" label="Within my network"></option>
+                            <option value="100" label="Meet new people"></option>
+                        </datalist>
+                    </div>
+                </div>
+
+                <!-- Action Skills -->
+                <div class="subsection_option">
+                    <div class="tooltip">
+                        <input id="as_checkbox" type="checkbox" class="css-checkbox" checked>
+                        <label for="as_checkbox"></label>
+                        <span class="tooltiptext">Toggles if "Skills" is factored into your search.</span>
+                    </div>
+                    <h3 id="as_title" class="subsection_title">Skills
+                        <div class="tooltip"><i class="fa fa-info-circle" aria-hidden="true"></i>
+                            <span class="tooltiptext">What skills would you like your action to demand of (or teach) you?</span>
+                        </div>
+                    </h3>
+                    <div id="as_slider_composite">
+                        <input id="skills" type="range" min="0" step="1" max="100" class="logistic_slider"/>
+                        <datalist id="as_list">
+                            <option value="0" label="No Skills"></option>
+                            <option value="50" label="Uses Current Skills"></option>
+                            <option value="100" label="Grows Skills"></option>
                         </datalist>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="tooltip">
-            <i id="motivators_chevron" onclick="toggleDropDown('motivators','motivators_chevron')" class="fa fa-chevron-down adv_search_drop_chevron"></i>
-            <span class="tooltiptext">Expands and collapses the "Motivations" section.</span>
-        </div>
-    </div>
-
-    <br>
-    <br>
-
-    <!-- Challenges section-->
-    <div class="section">
-        <div class="section_title">
-            <h1 class="section_title">Challenges</h1>
-        </div>
-        <br>
-        <div id="challenges" class="section_questions">
-            <!-- Action Ease -->
-            <div class="subsection_option">
-                <div class="tooltip">
-                    <input id="e_checkbox" type="checkbox" class="css-checkbox" checked>
-                    <label for="e_checkbox"></label>
-                    <span class="tooltiptext">Toggles if "Ease" is factored into your search.</span>
-                </div>
-                <h3 id="e_title" class="subsection_title">Ease (Time Commitment)
-                    <div class="tooltip"><i class="fa fa-info-circle" aria-hidden="true"></i>
-                        <span class="tooltiptext">The ease of the action, in regards to how much time it demands. A more difficult action demands more time.</span>
-                    </div>
-                </h3>
-                <div id="e_slider_composite">
-                    <input id="ease" type="range" min="0" step="1" max="100" class="barrier_slider"/>
-                    <datalist id="e_list">
-                        <option value="0" label="Quick"></option>
-                        <option value="33" label="Low"></option>
-                        <option value="66" label="Medium"></option>
-                        <option value="100" label="Long"></option>
-                    </datalist>
-                </div>
+            <div class="tooltip">
+                <i id="opportunities_chevron" onclick="toggleDropDown('opportunities','opportunities_chevron')" class="fa fa-chevron-down adv_search_drop_chevron"></i>
+                <span class="tooltiptext">Expands and collapses the "Opportunities" section.</span>
             </div>
-            
-            <!-- Action Financing -->
-            <div class="subsection_option">
-                <div class="tooltip">
-                    <input id="af_checkbox" type="checkbox" class="css-checkbox" checked>
-                    <label for="af_checkbox"></label>
-                    <span class="tooltiptext">Toggles if "Financing" is factored into your search.</span>
-                </div>
-                <h3 id="af_title" class="subsection_title">Financing
-                    <div class="tooltip"><i class="fa fa-info-circle" aria-hidden="true"></i>
-                        <span class="tooltiptext">How much money you would like to spend (or receive) from an action.</span>
-                    </div>
-                </h3>
-                <div id="af_slider_composite">
-                    <input id="action_financing" type="range" min="0" step="1" max="100" class="barrier_slider"/>
-                    <datalist id="af_list">
-                        <option value="0" label="Money Back"></option>
-                        <option value="33" label="No Cost"></option>
-                        <option value="66" label="Low Cost (<$100)"></option>
-                        <option value="100" label="High Cost"></option>
-                    </datalist>
-                </div>
-            </div>
-
-            <!-- Social Acceptability -->
-            <div class="subsection_option">
-                <div class="tooltip">
-                    <input id="sa_checkbox" type="checkbox" class="css-checkbox" checked>
-                    <label for="sa_checkbox"></label>
-                    <span class="tooltiptext">Toggles if "Social Acceptability" is factored into your search.</span>
-                </div>
-                <h3 id="sa_title" class="subsection_title">Social Acceptability
-                    <div class="tooltip"><i class="fa fa-info-circle" aria-hidden="true"></i>
-                        <span class="tooltiptext">How socially acceptable an action is considered by society.</span>
-                    </div>
-                </h3>
-                <div id="sa_slider_composite">
-                    <input id="social_acceptability" type="range" min="0" step="1" max="100" class="barrier_slider"/>
-                    <datalist id="sa_list">
-                        <option value="0" label="Private"></option>
-                        <option value="25" label="Accepted"></option>
-                        <option value="75" label="Neutral"></option>
-                        <option value="100" label="Challenged"></option>
-                    </datalist>
-                </div>
-            </div>
-
-            <h2 class="small_font adv_search_drop_chevron" onclick="toggleDropDown('aq_challenges','null')">Additional Questions</h2>
-            <div id="aq_challenges" class="section_questions">
-                <!-- Action Location -->
-                <div class="subsection_option">
-                    <div class="tooltip">
-                        <input id="al_checkbox" type="checkbox" class="css-checkbox" checked>
-                        <label for="al_checkbox"></label>
-                        <span class="tooltiptext">Toggles if "Location" is factored into your search.</span>
-                    </div>
-                    <h3 id="al_title" class="subsection_title">Location
-                        <div class="tooltip"><i class="fa fa-info-circle" aria-hidden="true"></i>
-                            <span class="tooltiptext">Where you would be willing to travel in order to initiate an action.</span>
-                        </div>
-                    </h3>
-                    <div id="al_slider_composite">
-                    <input id="action_location" type="range" min="0" step="1" max="100" class="barrier_slider"/>
-                    <datalist id="al_list">
-                        <option value="0" label="Local"></option>
-                        <option value="25" label="Town/City"></option>
-                        <option value="50" label="State"></option>
-                        <option value="75" label="National"></option>
-                        <option value="100" label="Global"></option>
-                    </datalist>
-                    </div>
-                </div>
-
-            <!-- Action Ease (Mental) -->
-            <div class="subsection_option">
-                <div class="tooltip">
-                    <input id="me_checkbox" type="checkbox" class="css-checkbox" checked>
-                    <label for="me_checkbox"></label>
-                    <span class="tooltiptext">Toggles if Action Ease (Mental) is factored into your search.</span>
-                </div>
-                <h3 id="me_title" class="subsection_title">Action Ease (Mental)
-                    <div class="tooltip"><i class="fa fa-info-circle" aria-hidden="true"></i>
-                        <span class="tooltiptext">How challenging would you like your actions to be?</span>
-                    </div>
-                </h3>
-                <div id="me_slider_composite">
-                    <input id="mental_ease" type="range" min="0" step="1" max="100" class="barrier_slider"/>
-                    <datalist id="ar_list">
-                        <option value="0" label="Very Easy"></option>
-                        <option value="25" label="Easy"></option>
-                        <option value="50" label="Medium"></option>
-                        <option value="75" label="Hard"></option>
-                        <option value="100" label="Very Hard"></option>
-                    </datalist>
-                </div>
-            </div>
-            </div>
-
-
-        </div>
-        <div class="tooltip">
-            <i id="challenges_chevron" onclick="toggleDropDown('challenges','challenges_chevron')" class="fa fa-chevron-down adv_search_drop_chevron"></i>
-            <span class="tooltiptext">Expands and collapses the "Challenges" section.</span>
-        </div>
-    </div>
-
-    <br>
-    <br>
-
-    <!-- Opportunities section-->
-    <div class="section">
-        <div class="section_title">
-            <h1 class="section_title">Opportunities</h1>
-        </div>
-        <br>
-        <div id="opportunities" class="section_questions">
-            <!-- Sociality -->
-            <div class="subsection_option">
-                <div class="tooltip">
-                    <input id="s_checkbox" type="checkbox" class="css-checkbox" checked>
-                    <label for="s_checkbox"></label>
-                    <span class="tooltiptext">Toggles if "Sociality" is factored into your search.</span>
-                </div>
-                <h3 id="s_title" class="subsection_title">Sociality
-                    <div class="tooltip"><i class="fa fa-info-circle" aria-hidden="true"></i>
-                        <span class="tooltiptext">How social would you like your action to be?</span>
-                    </div>
-                </h3>
-                <div id="s_slider_composite">
-                    <input id="action_sociality" type="range" min="0" step="1" max="100" class="logistic_slider"/>
-                    <datalist id="s_list">
-                        <option value="0" label="Private"></option>
-                        <option value="50" label="Within my network"></option>
-                        <option value="100" label="Meet new people"></option>
-                    </datalist>
-                </div>
-            </div>
-
-            <!-- Action Skills -->
-            <div class="subsection_option">
-                <div class="tooltip">
-                    <input id="as_checkbox" type="checkbox" class="css-checkbox" checked>
-                    <label for="as_checkbox"></label>
-                    <span class="tooltiptext">Toggles if "Skills" is factored into your search.</span>
-                </div>
-                <h3 id="as_title" class="subsection_title">Skills
-                    <div class="tooltip"><i class="fa fa-info-circle" aria-hidden="true"></i>
-                        <span class="tooltiptext">What skills would you like your action to demand of (or teach) you?</span>
-                    </div>
-                </h3>
-                <div id="as_slider_composite">
-                    <input id="skills" type="range" min="0" step="1" max="100" class="logistic_slider"/>
-                    <datalist id="as_list">
-                        <option value="0" label="No Skills"></option>
-                        <option value="50" label="Uses Current Skills"></option>
-                        <option value="100" label="Grows Skills"></option>
-                    </datalist>
-                </div>
-            </div>
-        </div>
-        <div class="tooltip">
-            <i id="opportunities_chevron" onclick="toggleDropDown('opportunities','opportunities_chevron')" class="fa fa-chevron-down adv_search_drop_chevron"></i>
-            <span class="tooltiptext">Expands and collapses the "Opportunities" section.</span>
         </div>
     </div>
 </div>
-
 
 
 
