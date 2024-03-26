@@ -49,6 +49,13 @@
         margin-bottom: 10px;
     }
 
+    .tool_title.smallest {
+        padding-bottom: 30px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        font-style: italic;
+    }
+
     body { background-color: rgb(255, 255, 255); }
 
     .css-checkbox { 
@@ -502,6 +509,7 @@
     <div id="personalization_title" class="tool_title">
         <h1 class="tool_title large">CSteps Personalization Tool</h1>
         <h3 class="tool_title small">To help you find your actions</h3>
+        <h6 class="tool_title smallest">This information is not stored beyond this search.</h5>
     </div>
     <div id="all_sections" class="adv_search">
         <!--Where I am at section-->
@@ -509,7 +517,6 @@
             <div class="section_title">
                 <h1 class="section_title">Where I am at</h1>
             </div>
-            <br>
             <div id="wiat_section" class="section_questions">
                 <!-- Neighborhood information-->
                 <div id="neighborhood_option" class="subsection_option wiat">
@@ -660,7 +667,7 @@
                     <!-- Heating and Air -->
                     <div id="haa_option" class="subsection_option wiat">
                         <form id="haa">
-                            <h3 class="subsection_title">For heating, cooling, and air-conditioning, I have...</h3>
+                            <h3 class="subsection_title">For heating, ventilation, and cooling, I have...</h3>
                             <div class="radio_option">
                                 <input id="haa_electric" name="haa" type="checkbox" value="HAA_ELECTRIC">
                                 <label for="haa_electric">Electric heating and air conditioning</label>
@@ -714,7 +721,7 @@
                         <label for="ci_checkbox"></label>
                         <span class="tooltiptext">Toggles if "Impact Scale" is factored into your search.</span>
                     </div>
-                    <h3 id="ci_title" class="subsection_title">Your Impact on Emissions
+                    <h3 id="ci_title" class="subsection_title">My Impact on Emissions
                         <div class="tooltip"><i class="fa fa-info-circle" aria-hidden="true"></i>
                             <span class="tooltiptext">The scale at which you want to impact emissions.</span>
                         </div>
@@ -739,7 +746,7 @@
                         <label for="ej_checkbox"></label>
                         <span class="tooltiptext">Toggles if "Environmental Justice Impact" is factored into your search.</span>
                     </div>
-                    <h3 id="ej_title" class="subsection_title">I'm into Enviornmental Justice at...
+                    <h3 id="ej_title" class="subsection_title">I'm into Environmental Justice for my...
                         <div class="tooltip"><i class="fa fa-info-circle" aria-hidden="true"></i>
                             <span class="tooltiptext">Where you want your action to yield the most enviornmental justice.</span>
                         </div>
@@ -750,8 +757,8 @@
                             <option value="0" label="Local"></option>
                             <option value="25" label="Town/City"></option>
                             <option value="50" label="State"></option>
-                            <option value="75" label="National"></option>
-                            <option value="100" label="Global"></option>
+                            <option value="75" label="Nation"></option>
+                            <option value="100" label="World"></option>
                         </datalist>
                     </div>
                 </div>
@@ -771,9 +778,9 @@
                     <div id="hi_slider_composite" class="">
                         <input id="health_impact" type="range" min="0" step="1" max="100" class="motivator_slider"/>
                         <datalist id="hi_list">
-                            <option value="0" label="My Health"></option>
-                            <option value="50" label="My Family's Health"></option>
-                            <option value="100" label="Global Health"></option>
+                            <option value="0" label="Myself"></option>
+                            <option value="50" label="My Family"></option>
+                            <option value="100" label="The World"></option>
                         </datalist>
                     </div>
                 </div>
@@ -810,7 +817,7 @@
                             <label for="bi_checkbox"></label>
                             <span class="tooltiptext">Toggles if "Biodiversity Impact" is factored into your search.</span>
                         </div>
-                        <h3 id="bi_title" class="subsection_title">Biodiversity Impact
+                        <h3 id="bi_title" class="subsection_title">Biodiversity Impact Scale?
                             <div class="tooltip"><i class="fa fa-info-circle" aria-hidden="true"></i>
                                 <span class="tooltiptext">The impact you want your action to have on biodiversity.</span>
                             </div>
@@ -922,7 +929,7 @@
                             <label for="al_checkbox"></label>
                             <span class="tooltiptext">Toggles if "Location" is factored into your search.</span>
                         </div>
-                        <h3 id="al_title" class="subsection_title">Location
+                        <h3 id="al_title" class="subsection_title">Location focus/Willing to travel to...
                             <div class="tooltip"><i class="fa fa-info-circle" aria-hidden="true"></i>
                                 <span class="tooltiptext">Where you would be willing to travel in order to initiate an action.</span>
                             </div>
@@ -944,9 +951,9 @@
                     <div class="tooltip">
                         <input id="me_checkbox" type="checkbox" class="css-checkbox" checked>
                         <label for="me_checkbox"></label>
-                        <span class="tooltiptext">Toggles if Action Ease (Mental) is factored into your search.</span>
+                        <span class="tooltiptext">Toggles if Ease (Mental) is factored into your search.</span>
                     </div>
-                    <h3 id="me_title" class="subsection_title">Action Ease (Mental)
+                    <h3 id="me_title" class="subsection_title">Ease (Mental)
                         <div class="tooltip"><i class="fa fa-info-circle" aria-hidden="true"></i>
                             <span class="tooltiptext">How challenging would you like your actions to be?</span>
                         </div>
@@ -997,7 +1004,7 @@
                         </div>
                     </h3>
                     <div id="s_slider_composite">
-                        <input id="action_sociality" type="range" min="0" step="1" max="100" class="logistic_slider"/>
+                        <input id="sociality" type="range" min="0" step="1" max="100" class="logistic_slider"/>
                         <datalist id="s_list">
                             <option value="0" label="Private"></option>
                             <option value="50" label="Within my network"></option>
@@ -1281,54 +1288,10 @@
 
 
 
-    //Action Impact
-    const action_impact = document.querySelector("#action_impact");
-    const ai_list = document.getElementById("ai_list").options;
-    action_impact.addEventListener("click", (event) => {
-        //Ensures only one tick is bolded at a time
-        for(i=0; i<ai_list.length; i++) {
-            ai_list[i].classList.remove("bold_tick");
-        }
-
-        if (event.target.value < 33) {
-            ai_list[0].classList.add("bold_tick");
-        } else if (event.target.value < 66) {
-            ai_list[1].classList.add("bold_tick");
-        } else {
-            ai_list[2].classList.add("bold_tick");
-        }
-    })
-    toggleSlider("ai_checkbox", "ai_slider_composite", "ai_title");
-
-
-
-    //Noticability
-    const noticability = document.querySelector("#noticability");
-    const n_list = document.getElementById("n_list").options;
-    noticability.addEventListener("click", (event) => {
-        //Ensures only one tick is bolded at a time
-        for(i=0; i<n_list.length; i++) {
-            n_list[i].classList.remove("bold_tick");
-        }
-
-        if (event.target.value < 13) {
-            n_list[0].classList.add("bold_tick");
-        } else if (event.target.value < 38) {
-            n_list[1].classList.add("bold_tick");
-        } else if (event.target.value < 75) {
-            n_list[2].classList.add("bold_tick");
-        } else {
-            n_list[3].classList.add("bold_tick");
-        }
-    })
-    toggleSlider("n_checkbox", "n_slider_composite", "n_title");
-
-
-
     //Sociality
-    const action_sociality = document.querySelector("#action_sociality");
+    const sociality = document.querySelector("#sociality");
     const s_list = document.getElementById("s_list").options;
-    action_sociality.addEventListener("click", (event) => {
+    sociality.addEventListener("click", (event) => {
         //Ensures only one tick is bolded at a time
         for(i=0; i<s_list.length; i++) {
             s_list[i].classList.remove("bold_tick");
@@ -1343,5 +1306,11 @@
         }
     })
     toggleSlider("s_checkbox", "s_slider_composite", "s_title");
+
+    if (sociality) {
+        console.log("Yes, it exists!")
+    } else {
+        console.log("No, it doesn't!")
+    }
 
 </script>
