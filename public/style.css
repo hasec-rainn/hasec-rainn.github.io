@@ -1,9 +1,4 @@
-li {
-    font-size: 2rem;
-    width: 300px;
-    margin: 4px;
-    padding: 4px;
-    list-style: none
+h1 {
+    color:darkblue;
+    background-color: black;
 }
-    .midlaner {background-color: #eeeeee}
-    .toplaner {background-color: #ffea00}
