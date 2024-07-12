@@ -1,10 +1,26 @@
 const express = require('express');
+const {readFileSync} = require('node:fs');
+const Handlebars = require("handlebars");
 const app = express();
 const port = 3000;
+
+
 var options = {root: __dirname + "/public/"};
 
 app.get('/', (req, res) => {
-    res.sendFile("index.html",options)
+    //read the handlebars file to string
+    f = readFileSync(
+      'public/templates/main.handlebars',
+      "utf8", 
+      (err, data) => {return data;}
+    );
+
+    //compile handlebars file
+    const template = Handlebars.compile(f);
+    console.log(template({ main: "<h1>Grim world</h1>" }));
+
+    //send the compiled file
+    res.send(template({ main: "<h1>Grim world</h1>" }));
 });
 
 app.get('/cat', (req, res) => {
