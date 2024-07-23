@@ -8,19 +8,38 @@ const port = 3000;
 var options = {root: __dirname + "/public/"};
 
 app.get('/', (req, res) => {
-    //read the handlebars file to string
-    f = readFileSync(
-      'public/templates/main.handlebars',
-      "utf8", 
-      (err, data) => {return data;}
-    );
+  
+  //create the object that holds our handlebars data
+  const hb_data = {
+    navbar: null,
+    body: null
+  };
+  hb_data.body = readFileSync(
+    'public/html/about.html',
+    "utf8", 
+    (err, data) => {return data;}
+  );
 
-    //compile handlebars file
-    const template = Handlebars.compile(f);
-    console.log(template({ main: "<h1>Grim world</h1>" }));
+  //read the main handlebars file to string
+  m = readFileSync(
+    'public/templates/main.handlebars',
+    "utf8", 
+    (err, data) => {return data;}
+  );
 
-    //send the compiled file
-    res.send(template({ main: "<h1>Grim world</h1>" }));
+  //read the navbar to string and put in hb_data
+  hb_data.navbar  = readFileSync(
+    'public/html/navbar.html',
+    "utf8", 
+    (err, data) => {return data;}
+  );
+
+  //compile handlebars file
+  const template = Handlebars.compile(m);
+  console.log(template(hb_data));
+
+  //send the compiled file
+  res.send(template(hb_data));
 });
 
 app.get('/cat', (req, res) => {
