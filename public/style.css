@@ -13,6 +13,7 @@
 
 body {
     margin: 0px;
+    background-image: radial-gradient(rgb(213,181,124), rgb(163,116,55));
 }
 
 .main {

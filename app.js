@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
     body: null
   };
   hb_data.body = readFileSync(
-    'public/html/about.html',
+    'public/html/home.html',
     "utf8", 
     (err, data) => {return data;}
   );
@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
 
   //read the navbar to string and put in hb_data
   hb_data.navbar  = readFileSync(
-    'public/html/navbar.html',
+    'public/html/navbar_home.html',
     "utf8", 
     (err, data) => {return data;}
   );
