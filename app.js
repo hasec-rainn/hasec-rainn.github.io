@@ -54,6 +54,10 @@ app.get('/public/images/coffee.ico', (req, res) => {
   res.sendFile("images/coffee.ico",options)
 });
 
+app.get('/public/images/mountain.png', (req, res) => {
+  res.sendFile("images/mountain_cropped.png",options)
+});
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 });
