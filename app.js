@@ -55,7 +55,7 @@ app.get('/public/images/coffee.ico', (req, res) => {
 });
 
 app.get('/public/images/mountain.png', (req, res) => {
-  res.sendFile("images/mountain_cropped.png",options)
+  res.sendFile("images/mountain_final.png",options)
 });
 
 app.listen(port, () => {
