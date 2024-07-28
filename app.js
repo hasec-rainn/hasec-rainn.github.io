@@ -71,7 +71,7 @@ app.get('/projects', (req, res) => {
     project: [
       {
           title: "Myte",
-          image: "mountain", 
+          image: "public/images/coffee.ico", 
           desc: "The very website you're looking at now!"
       }, 
       {
