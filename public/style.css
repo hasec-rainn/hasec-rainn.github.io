@@ -26,9 +26,20 @@ a:hover { color: var(--hover-color); }
 
 body { margin: 0px; }
 
+h1 {
+    color: var(--font-color);
+    font-size: 30px;
+}
+
+h1.home_title {
+    font-size: 4vw;
+    margin: 0px;
+    text-align: center;
+    background: #3A2306;
+}
+
 h1.title_card {
     font-size: var(--pri-header-size);
-    color: var(--font-color);
     margin-top: 2.5%;
     margin-bottom: -2%;
     margin-left: 2.5%;
@@ -69,6 +80,11 @@ li.navbar {
     color: var(--font-color);
 }
 
+p {
+    font-size: var(--body-font-size);
+    color: var(--font-color);
+}
+
 .quote-container {
     display: block;
     width: 415px;
@@ -83,7 +99,8 @@ ul.navbar {
     border: 0px;
     padding: 10px;
     font-size: var(--nav-font-size);
-    background-color: rgb(163,116,55);
+    background-color: var(--acc-color);
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+    box-shadow: black 0px 5px 10px -4px;
 }
