@@ -10,8 +10,9 @@
     --tri-color: #C19D67;
     --acc-color: #996337;
     background-image: radial-gradient(
-        var(--sec-color), 
-        var(--pri-color)
+        circle at bottom 25% right 20%,
+        var(--sec-color) 28%, 
+        var(--pri-color) 55%
     );
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -41,6 +42,13 @@ h2.title_card {
     margin-left: 5%;
 }
 
+i.quote {
+    opacity: 50%;
+    font-style: italic;
+    width: 50px;
+    height: auto;
+}
+
 img.title_card {
     position: absolute;
     bottom: 0vh;
@@ -55,6 +63,18 @@ li.navbar {
 }
 
 .main { margin-left: 10px; }
+
+.quote {
+    font-size: 24px;
+    color: var(--font-color);
+}
+
+.quote-container {
+    display: block;
+    width: 415px;
+    margin-left: 175px;
+    margin-top: 150px;
+}
 
 ul.navbar {
     list-style-type: none;
