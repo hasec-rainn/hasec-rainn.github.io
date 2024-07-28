@@ -3,6 +3,7 @@
     --nav-font-size: 30px;
     --pri-header-size: 172px;
     --sec-header-size: 115px;
+    --tri-header-size: 32px;
     --font-color: rgb(253,248,237);
     --hover-color: rgb(213,181,124);
     --pri-color: #3A2306;
@@ -53,6 +54,14 @@ h2.title_card {
     margin-left: 5%;
 }
 
+h3 {
+    color: var(--font-color);
+    font-size: var(--tri-header-size);
+    text-align: center;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
 i.quote {
     opacity: 50%;
     font-style: italic;
@@ -83,6 +92,18 @@ li.navbar {
 p {
     font-size: var(--body-font-size);
     color: var(--font-color);
+}
+
+.project {
+    background: var(--pri-color);
+    border: 10px solid var(--acc-color);
+    border-radius: 5px;
+    width: 400px;
+    height: 100px;
+}
+
+.projects_cointer {
+
 }
 
 .quote-container {
