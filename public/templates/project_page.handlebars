@@ -1,10 +1,12 @@
 <h1>My Projects</h1>
 
-<div class="project_container">
+<div class="projects_container">
     {{#each project}}
-       <p>{{this.title}}</p>
-        <p>{{this.image}}</p>
-        <p>{{this.desc}}</p>
+        <div class="project">
+            <h3>{{{this.title}}}</h3>
+            <img src="{{{this.image}}}"/>
+            <p>{{{this.desc}}}</p>
+        </div>
     {{else}}
         <p>Not detecting any projects!</p>
     {{/each}}
