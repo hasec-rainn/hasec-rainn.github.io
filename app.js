@@ -71,8 +71,11 @@ app.get('/projects', (req, res) => {
     project: [
       {
           title: "Myte",
-          image: "public/images/coffee.ico", 
-          desc: "The very website you're looking at now!"
+          image: "public/images/mountain_cropped.png", 
+          desc: "\
+            The website you're looking at now! Built with node.js\
+            and handlebars, it acts as a simple website portfolio\
+            that displays all my projects and experiences."
       }, 
       {
           title: "Saving Sergeant",
@@ -108,6 +111,10 @@ app.get('/public/images/coffee.ico', (req, res) => {
 
 app.get('/public/images/mountain.png', (req, res) => {
   res.sendFile("images/mountain_final.png",options)
+});
+
+app.get('/public/images/mountain_cropped.png', (req, res) => {
+  res.sendFile("images/mountain_cropped.png",options)
 });
 
 app.listen(port, () => {
