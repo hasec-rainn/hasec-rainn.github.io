@@ -3,11 +3,11 @@
 <div class="projects_container">
     {{#each project}}
         <div class="project">
-            <div class="project_header">
+            <div class="project_header" onclick="toggleDisplay('{{{this.id}}}')">
                 <h3>{{{this.title}}}</h3>
                 <img src="{{{this.image}}}"/>
             </div>
-            <p>{{{this.desc}}}</p>
+            <p id={{{this.id}}}>{{{this.desc}}}</p>
         </div>
     {{else}}
         <p>Not detecting any projects!</p>

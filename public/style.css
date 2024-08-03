@@ -110,6 +110,7 @@ p {
 
 .project p {
     padding-left: 15px;
+    display: none;
 }
 
 .projects_container {
@@ -119,6 +120,11 @@ p {
     justify-content: center;
     align-items: center;
 }
+
+.projects_container:hover {
+    color: var(--hover-color);
+    width: 50px;
+} 
 
 .project_header {
     text-align: center;
