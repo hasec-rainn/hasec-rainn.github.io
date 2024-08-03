@@ -3,8 +3,10 @@
 <div class="projects_container">
     {{#each project}}
         <div class="project">
-            <h3>{{{this.title}}}</h3>
-            <img src="{{{this.image}}}"/>
+            <div class="project_header">
+                <h3>{{{this.title}}}</h3>
+                <img src="{{{this.image}}}"/>
+            </div>
             <p>{{{this.desc}}}</p>
         </div>
     {{else}}
