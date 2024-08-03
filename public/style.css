@@ -103,8 +103,8 @@ p {
     display: block;
     margin: 0px;
     margin-left: 1rem;
-    width: 10%;
-    height: auto;
+    width: auto;
+    height: var(--tri-header-size);
 }
 
 .project p {

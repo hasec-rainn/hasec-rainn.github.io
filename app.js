@@ -79,8 +79,16 @@ app.get('/projects', (req, res) => {
       }, 
       {
           title: "Saving Sergeant",
-          image: "file icon", 
-          desc: "Machine vision receipts into an SQL database"
+          image: "public/images/dollar_sign.png", 
+          desc: "This project acts as a proof-of-concept for a \
+            receipt-scanning and receipt-analyzing software whose \
+            aim is to provide financial insights into users' spending \
+            habits. This is done by preprocessing images of receipts, \
+            scanning them with Tesseract OCR, and storing them in a csv \
+            file that can then be read into a SQL database. Analysis is \
+            then performed with an SQL database to provide insights \
+            into the user's spending habits.<br><br>\
+            See the project here on github: https://github.com/hasec-rainn/Saving_Sergeant"
       }
   ]
   };
@@ -115,6 +123,10 @@ app.get('/public/images/mountain.png', (req, res) => {
 
 app.get('/public/images/mountain_cropped.png', (req, res) => {
   res.sendFile("images/mountain_cropped.png",options)
+});
+
+app.get('/public/images/dollar_sign.png', (req, res) => {
+  res.sendFile("images/dollar_sign.png",options)
 });
 
 app.listen(port, () => {
