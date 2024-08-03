@@ -1,9 +1,9 @@
 :root {
-    --body-font-size: 16px;
+    --body-font-size: 1.1rem;
     --nav-font-size: 30px;
     --pri-header-size: 172px;
     --sec-header-size: 115px;
-    --tri-header-size: 32px;
+    --tri-header-size: 3rem;
     --font-color: rgb(253,248,237);
     --hover-color: rgb(213,181,124);
     --pri-color: #3A2306;
@@ -47,6 +47,7 @@ h1.title_card {
     margin-top: 2.5%;
     margin-bottom: -2%;
     margin-left: 2.5%;
+    text-align: left;
 }
 
 h2.title_card {
