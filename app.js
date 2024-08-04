@@ -70,14 +70,18 @@ app.get('/projects', (req, res) => {
   p_data = {
     project: [
       {
+          id: "myte_project",
           title: "Myte",
           image: "public/images/mountain_cropped.png", 
           desc: "\
             The website you're looking at now! Built with node.js\
             and handlebars, it acts as a simple website portfolio\
-            that displays all my projects and experiences."
+            that displays all my projects and experiences.\
+            <br><br>\
+            Myte is a mashup of the words <u>My</u> and Si<u>te</u>."
       }, 
       {
+          id: "ss_project",
           title: "Saving Sergeant",
           image: "public/images/dollar_sign.png", 
           desc: "This project acts as a proof-of-concept for a \
@@ -88,7 +92,7 @@ app.get('/projects', (req, res) => {
             file that can then be read into a SQL database. Analysis is \
             then performed with an SQL database to provide insights \
             into the user's spending habits.<br><br>\
-            See the project here on github: https://github.com/hasec-rainn/Saving_Sergeant"
+            See the project <a href='https://github.com/hasec-rainn/Saving_Sergeant'><u>here</u></a> on github."
       }
   ]
   };
@@ -111,6 +115,10 @@ app.get('/cat', (req, res) => {
 
 app.get('/public/style.css', (req, res) => {
   res.sendFile("style.css",options)
+});
+
+app.get('/public/script.js', (req, res) => {
+  res.sendFile("script.js",options)
 });
 
 app.get('/public/images/coffee.ico', (req, res) => {
