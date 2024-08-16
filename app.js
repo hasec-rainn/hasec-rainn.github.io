@@ -11,7 +11,7 @@ app.get('/', (req, res) => {
   
   //read the main handlebars file in and make it a template
   m = readFileSync(
-    'public/templates/main.handlebars',
+    'public/templates/home.handlebars',
     "utf8", 
     (err, data) => {return data;}
   );
