@@ -70,6 +70,17 @@ app.get('/projects', (req, res) => {
   p_data = {
     project: [
       {
+        id: "wujo_transpac",
+        title: "Wujo Transpac",
+        image: "public/images/security_camera.png",
+        desc: "I was the IT support lead at Wujo Transpac and was responsible for \
+          diagnosing and resolving technical issues that customers encountered in \
+          products. <br><br>\
+          Some of the products I provided support on included the CG6S smart \
+          battery camera, the CA42 wireless pan tilt camera, and the Vine 550 \
+          Smart Thermostat."
+      },
+      {
           id: "myte_project",
           title: "Myte",
           image: "public/images/mountain_cropped.png", 
@@ -87,9 +98,9 @@ app.get('/projects', (req, res) => {
           desc: "This project acts as a proof-of-concept for a \
             receipt-scanning and receipt-analyzing software whose \
             aim is to provide financial insights into users' spending \
-            habits. This is done by preprocessing images of receipts, \
+            habits.<br><br>This is done by preprocessing images of receipts, \
             scanning them with Tesseract OCR, and storing them in a csv \
-            file that can then be read into a SQL database. Analysis is \
+            file that can then be read into a SQL database.<br>Analysis is \
             then performed with an SQL database to provide insights \
             into the user's spending habits.<br><br>\
             See the project <a href='https://github.com/hasec-rainn/Saving_Sergeant'><u>here</u></a> on github."
@@ -113,12 +124,12 @@ app.get('/cat', (req, res) => {
   res.send("Cats are the best.")
 });
 
-app.get('/public/style.css', (req, res) => {
-  res.sendFile("style.css",options)
-});
-
 app.get('/public/script.js', (req, res) => {
   res.sendFile("script.js",options)
+});
+
+app.get('/public/style.css', (req, res) => {
+  res.sendFile("style.css",options)
 });
 
 app.get('/public/images/coffee.ico', (req, res) => {
@@ -131,6 +142,10 @@ app.get('/public/images/mountain.png', (req, res) => {
 
 app.get('/public/images/mountain_cropped.png', (req, res) => {
   res.sendFile("images/mountain_cropped.png",options)
+});
+
+app.get('/public/images/security_camera.png', (req, res) => {
+  res.sendFile("images/security_camera.png",options)
 });
 
 app.get('/public/images/dollar_sign.png', (req, res) => {
