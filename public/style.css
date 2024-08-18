@@ -18,6 +18,11 @@ a {
     text-decoration: none;
 }
 
+p.about {
+    padding-left: 10vw;
+    padding-right: 10vw;
+}
+
 a:hover { color: var(--hover-color); }
 
 body { 
@@ -37,9 +42,16 @@ h1 {
     text-align: center;
 }
 
+h1.about {
+    text-align: left;
+    margin-bottom: 2rem;
+}
+
+
 h1.dark {
     color: var(--pri-color);
 }
+
 
 h1.home_title {
     font-size: 4rem;
@@ -70,6 +82,14 @@ i.quote {
     font-style: italic;
     width: 50px;
     height: auto;
+}
+
+img.about {
+    float: left;
+    height: 55vh;
+    width: auto;
+    margin-right: 1vw;
+    margin-bottom: 1vw;
 }
 
 img.title_card {

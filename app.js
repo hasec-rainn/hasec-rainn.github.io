@@ -169,6 +169,10 @@ app.get('/public/images/coffee.ico', (req, res) => {
   res.sendFile("images/coffee.ico",options)
 });
 
+app.get('/public/images/whale_watching.jpg', (req, res) => {
+  res.sendFile("images/whale_watching.jpg",options)
+});
+
 app.get('/public/images/mountain.png', (req, res) => {
   res.sendFile("images/mountain_final.png",options)
 });
