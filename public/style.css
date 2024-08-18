@@ -84,13 +84,6 @@ i.quote {
     height: auto;
 }
 
-img.about {
-    float: left;
-    height: 55vh;
-    width: auto;
-    margin-right: 1.1vw;
-    margin-bottom: 1vw;
-}
 
 img.title_card {
     position: absolute;
@@ -98,6 +91,14 @@ img.title_card {
     right: 0vw;
     height: 70vh;
     width: auto;
+}
+
+img.about {
+    float: left;
+    height: 55vh;
+    width: auto;
+    margin-right: 1.1vw;
+    margin-bottom: 1vw;
 }
 
 li.navbar {
