@@ -1,0 +1,50 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Chase Nairn-Howard">
+    <meta name="description" content="
+    A portfolio website containing work and notable experiences 
+    completed by Chase Nairn-Howard.
+    ">
+    <title>Chase's Portfolio</title>
+
+    <link rel="icon" href="/public/images/coffee.ico" type="image/x-icon">
+    <link rel="stylesheet" href="public/style.css">
+    <script src="public/script.js" defer=""></script>
+</head>
+
+<body style="background: #e7bd7e">
+    <div class="navbar_container">
+    <h1 class="home_title">Chase Nairn-Howard</h1>
+    <ul class="navbar">
+        <li class="navbar"><a href="/">Home</a></li>
+        <li class="navbar"><a href="about">About</a></li>
+        <li class="navbar"><a href="projects">Projects &amp; Experience</a></li>
+    </ul>
+</div>
+    <h1 class="dark">My Projects</h1>
+
+<div class="projects_container">
+        <div class="project">
+            <div class="project_header" onclick="toggleDisplay('wujo_transpac')">
+                <h3>Wujo Transpac</h3>
+                <img src="public/images/security_camera.png">
+            </div>
+            <p id="wujo_transpac" style="display: none;">I was the IT support lead at Wujo Transpac and was responsible for           diagnosing and resolving technical issues that customers encountered in           products. <br><br>          Some of the products I provided support on included the CG6S smart           battery camera, the CA42 wireless pan tilt camera, and the Vine 550           Smart Thermostat.</p>
+        </div>
+        <div class="project">
+            <div class="project_header" onclick="toggleDisplay('myte_project')">
+                <h3>Myte</h3>
+                <img src="public/images/mountain_cropped.png">
+            </div>
+            <p id="myte_project" style="display: none;">            The website you're looking at now! Built with node.js            and handlebars, it acts as a simple website portfolio            that displays all my projects and experiences.            <br><br>            Myte is a mashup of the words <u>My</u> and Si<u>te</u>.</p>
+        </div>
+        <div class="project">
+            <div class="project_header" onclick="toggleDisplay('ss_project')">
+                <h3>Saving Sergeant</h3>
+                <img src="public/images/dollar_sign.png">
+            </div>
+            <p id="ss_project" style="display: none;">This project acts as a proof-of-concept for a             receipt-scanning and receipt-analyzing software whose             aim is to provide financial insights into users' spending             habits.<br><br>This is done by preprocessing images of receipts,             scanning them with Tesseract OCR, and storing them in a csv             file that can then be read into a SQL database.<br>Analysis is             then performed with an SQL database to provide insights             into the user's spending habits.<br><br>            See the project <a href="https://github.com/hasec-rainn/Saving_Sergeant"><u>here</u></a> on github.</p>
+        </div>
+</div>
+    
+</body>
