@@ -5,7 +5,7 @@ const app = express();
 const port = 3000;
 
 
-var options = {root: __dirname + "/public/"};
+var options = {root: __dirname + "myte/public/"};
 
 app.get('/', (req, res) => {
   
