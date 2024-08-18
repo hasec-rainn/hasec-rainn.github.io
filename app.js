@@ -40,6 +40,39 @@ app.get('/', (req, res) => {
   res.send(template(hb_data));
 });
 
+app.get('/about', (req, res) => {
+  
+  //read the main handlebars file in and make it a template
+  m = readFileSync(
+    'public/templates/main.handlebars',
+    "utf8", 
+    (err, data) => {return data;}
+  );
+  const template = Handlebars.compile(m);
+
+  //create the object that holds our handlebars data
+  const hb_data = {
+    navbar: null,
+    body: null,
+    footer: null
+  };
+
+  //write in the about page and navbar into our object
+  hb_data.body = readFileSync(
+    'public/html/about.html',
+    "utf8", 
+    (err, data) => {return data;}
+  );
+  hb_data.navbar  = readFileSync(
+    'public/html/navbar.html',
+    "utf8", 
+    (err, data) => {return data;}
+  );
+
+  //send our filled-out template
+  res.send(template(hb_data));
+});
+
 app.get('/projects', (req, res) => {
   
   //read the main handlebars file in and make it a template

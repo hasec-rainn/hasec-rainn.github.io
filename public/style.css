@@ -37,6 +37,10 @@ h1 {
     text-align: center;
 }
 
+h1.dark {
+    color: var(--pri-color);
+}
+
 h1.home_title {
     font-size: 4rem;
     margin: 0px;
@@ -91,6 +95,10 @@ li.navbar {
 p {
     font-size: var(--body-font-size);
     color: var(--font-color);
+}
+
+p.dark {
+    color: var(--pri-color);
 }
 
 .project {
