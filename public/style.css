@@ -1,9 +1,9 @@
 :root {
     --body-font-size: 1.4rem;
-    --nav-font-size: 30px;
-    --pri-header-size: 172px;
-    --sec-header-size: 115px;
-    --tri-header-size: 3rem;
+    --nav-font-size: 3.5vmin;
+    --pri-header-size: 17vmin;
+    --sec-header-size: 13vmin;
+    --tri-header-size: 4.5vmin;
     --font-color: rgb(253,248,237);
     --hover-color: rgb(213,181,124);
     --pri-color: #3A2306;
@@ -84,21 +84,28 @@ i.quote {
     height: auto;
 }
 
-
-img.title_card {
-    position: absolute;
-    bottom: 0vh;
-    right: 0vw;
-    height: 70vh;
-    width: auto;
-}
-
 img.about {
     float: left;
     height: 55vh;
     width: auto;
     margin-right: 1vw;
     margin-bottom: 1vw;
+}
+
+@media (hover: hover) {
+    img.title_card {
+        position: absolute;
+        bottom: 0vh;
+        right: 0vw;
+        height: 70vh;
+        width: auto;
+    }
+}
+
+@media not (hover: hover) {
+    img.title_card {
+        display: none;
+    }
 }
 
 li.navbar {
@@ -109,7 +116,7 @@ li.navbar {
 .main { margin-left: 10px; }
 
 .quote {
-    font-size: 24px;
+    font-size: 1.5rem;
     color: var(--font-color);
 }
 
@@ -128,7 +135,7 @@ p.dark {
     border: 10px solid var(--acc-color);
     border-radius: 5px;
     flex: 1 1 20%;
-    width: 40%;
+    width: 35%;
 }
 
 .project p {
@@ -148,6 +155,8 @@ p.dark {
     text-align: center;
     margin-bottom: 10px;
     margin-top: 10px;
+    padding-left: 2vmin;
+    padding-right: 2vmin;
     display: flex;
     justify-content: center;
 }
@@ -158,6 +167,7 @@ p.dark {
     margin-left: 1rem;
     width: auto;
     height: var(--tri-header-size);
+    align-self: center;
 }
 
 
