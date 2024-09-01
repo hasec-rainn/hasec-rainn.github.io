@@ -104,39 +104,66 @@ app.get('/projects', (req, res) => {
     project: [
       {
         id: "wujo_transpac",
-        title: "Wujo Transpac",
+        title: "Tech Support",
         image: "public/images/security_camera.png",
-        desc: "I was the IT support lead at Wujo Transpac and was responsible for \
+        desc: "I provided tech support at Wujo Transpac and was responsible for \
           diagnosing and resolving technical issues that customers encountered in \
           products. <br><br>\
           Some of the products I provided support on included the CG6S smart \
-          battery camera, the CA42 wireless pan tilt camera, and the Vine 550 \
-          Smart Thermostat."
+          battery camera and an automated litterbox."
       },
       {
           id: "myte_project",
-          title: "Myte",
+          title: "Portfolio Website",
           image: "public/images/mountain_cropped.png", 
           desc: "\
-            The website you're looking at now! Built with node.js\
-            and handlebars, it acts as a simple website portfolio\
+            The website you're looking at now! Built using node.js\
+            and handlebars, 'Myte' acts as a simple website portfolio\
             that displays all my projects and experiences.\
             <br><br>\
             Myte is a mashup of the words <u>My</u> and Si<u>te</u>."
       }, 
       {
           id: "ss_project",
-          title: "Saving Sergeant",
+          title: "ML & Databases",
           image: "public/images/dollar_sign.png", 
-          desc: "This project acts as a proof-of-concept for a \
+          desc: "My project Saving Sergeant acts as a proof-of-concept for a \
             receipt-scanning and receipt-analyzing software whose \
             aim is to provide financial insights into users' spending \
-            habits.<br><br>This is done by preprocessing images of receipts, \
+            habits.\
+            <br><br>\
+            This is done by preprocessing images of receipts, \
             scanning them with Tesseract OCR, and storing them in a csv \
             file that can then be read into a SQL database.<br>Analysis is \
             then performed with an SQL database to provide insights \
-            into the user's spending habits.<br><br>\
+            into the user's spending habits.\
+            <br><br>\
             See the project <a href='https://github.com/hasec-rainn/Saving_Sergeant'><u>here</u></a> on github."
+      },
+      {
+        id: "csteps",
+        title: "Fullstack Developer",
+        image: "public/images/csteps_logo.png",
+        desc: "At ClimateSteps, I acted as a Fullstack Developer Intern.\
+          <br><br>\
+          I increased post content by 150% and enabled Climate Step's partnership\
+          with Earth Hero by developing a synced webservice that pulls in data from\
+          Earth Hero's Airtable.\
+          <br><br>\
+          Additionally, I co-designed 'Steps Coach': a search tool designed to find\
+          personalized climate actions for individuals."
+      },
+      {
+        id: "visiting_angels",
+        title: "Caregiver",
+        image: "public/images/va_logo.png",
+        desc: "At Visiting Angels, I acted as a caregiver for the elderly \
+          and disabled.\
+          <br><br>\
+          My primary duties included providing hospice care, driving clients,\
+          administering medication, providing companionship,\
+          aiding in self-ambulation, cleaning and dressing clients,\
+          and ensuring the general well-being of clients."
       }
   ]
   };
@@ -165,6 +192,10 @@ app.get('/public/style.css', (req, res) => {
   res.sendFile("style.css",options)
 });
 
+app.get('/public/images/csteps_logo.png', (req, res) => {
+  res.sendFile("images/csteps_logo.png",options)
+});
+
 app.get('/public/images/coffee.ico', (req, res) => {
   res.sendFile("images/coffee.ico",options)
 });
@@ -187,6 +218,10 @@ app.get('/public/images/security_camera.png', (req, res) => {
 
 app.get('/public/images/dollar_sign.png', (req, res) => {
   res.sendFile("images/dollar_sign.png",options)
+});
+
+app.get('/public/images/va_logo.png', (req, res) => {
+  res.sendFile("images/va_logo.png",options)
 });
 
 app.listen(port, () => {
