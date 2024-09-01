@@ -92,12 +92,20 @@ img.about {
     margin-bottom: 1vw;
 }
 
-img.title_card {
-    position: absolute;
-    bottom: 0vh;
-    right: 0vw;
-    height: 70vh;
-    width: auto;
+@media (hover: hover) {
+    img.title_card {
+        position: absolute;
+        bottom: 0vh;
+        right: 0vw;
+        height: 70vh;
+        width: auto;
+    }
+}
+
+@media not (hover: hover) {
+    img.title_card {
+        display: none;
+    }
 }
 
 li.navbar {
