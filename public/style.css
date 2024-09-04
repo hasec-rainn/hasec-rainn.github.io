@@ -13,11 +13,12 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-@media not (hover:hover) {
+@media (orientation: portrait) {
     :root {
         --nav-font-size: 10vmin;
         --body-font-size: 5vmin;
         --tri-header-size: 8vmin;
+        --font-color: red;
     }
 }
 
@@ -50,7 +51,7 @@ h1 {
     text-align: center;
 }
 
-@media not (hover:hover) {
+@media (orientation: portrait) {
     h1 {
         font-size: 200%;
     }
@@ -113,7 +114,7 @@ img.title_card {
     width: auto;
 }
 
-@media not (hover: hover) {
+@media (orientation: portrait) {
     img.title_card {
         width: 100vmin;
         height: auto;
@@ -150,7 +151,7 @@ p.dark {
     width: 35%;
 }
 
-@media not (hover:hover) {
+@media (orientation: portrait) {
     .project {
         width: 60%;
     }
@@ -205,7 +206,7 @@ p.dark {
     margin-top: 7.5%;
 }
 
-@media not (hover: hover) {
+@media (orientation: portrait) {
     .quote-container {
         margin-left: 10%;
         margin-top: 20%;
