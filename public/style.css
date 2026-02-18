@@ -1,5 +1,6 @@
 :root {
     --body-font-size: 1.4rem;
+    --about-spacing-const: 1.25vw;
     --nav-font-size: 3.5vmin;
     --pri-header-size: 17vmin;
     --sec-header-size: 13vmin;
@@ -27,7 +28,7 @@ a {
 }
 
 p.about {
-    padding-left: 10vw;
+    padding-left: var(--about-spacing-const);
     padding-right: 10vw;
 }
 
@@ -100,8 +101,9 @@ img.about {
     float: left;
     height: 55vh;
     width: auto;
-    margin-right: 1vw;
-    margin-bottom: 1vw;
+    margin-right: var(--about-spacing-const);
+    margin-bottom: var(--about-spacing-const);
+    margin-left: var(--about-spacing-const);
     max-width: 100%;
 }
 

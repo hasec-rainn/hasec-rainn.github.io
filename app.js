@@ -1,5 +1,5 @@
 const express = require('express');
-const {readFileSync} = require('node:fs');
+const {readFileSync} = require('fs');
 const Handlebars = require("handlebars");
 const app = express();
 const port = 3000;
@@ -102,6 +102,22 @@ app.get('/projects', (req, res) => {
   //then put that data into the body that we will send
   p_data = {
     project: [
+      {
+        id: "server_admin",
+        title: "Server Admin",
+        image: "public/images/web_server.png",
+        desc: "◦ Built and maintained 2 Linux-based servers supporting 19+ concurrent remote users\
+        <br><br>◦ Configured NAT, port forwarding, and firewall policies to securely expose internal services\
+        <br><br>◦ Managed 3.1 GB of server data; maintained 99%+ uptime; resolved 4+ technical incidents"
+      },
+      {
+        id: "sea_otter",
+        title: "Swim Instructor",
+        image: "public/images/sea_otter.png",
+        desc: "◦ Led multi-family instructional sessions with groups of 2-6 parents and their children; guided parents in foundational swim training techniques\
+        <br><br>◦ Taught 33+ students per week - including special needs students, children, and adults\
+        <br><br>◦ Recognized for parent satisfaction and perfect attendance"
+      },
       {
         id: "wujo_transpac",
         title: "Tech Support",
@@ -222,6 +238,14 @@ app.get('/public/images/dollar_sign.png', (req, res) => {
 
 app.get('/public/images/va_logo.png', (req, res) => {
   res.sendFile("images/va_logo.png",options)
+});
+
+app.get('/public/images/sea_otter.png', (req, res) => {
+  res.sendFile("images/sea_otter.png",options)
+});
+
+app.get('/public/images/web_server.png', (req, res) => {
+  res.sendFile("images/web_server.png",options)
 });
 
 app.listen(port, () => {
