@@ -1,16 +1,16 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="utf-8">
-    <meta name="author" content="Chase Nairn-Howard">
+    <meta charset="utf-8"/>
+    <meta name="author" content="Chase Nairn-Howard"/>
     <meta name="description" content="
     A portfolio website containing work and notable experiences 
     completed by Chase Nairn-Howard.
-    ">
+    "/>
     <title>Chase's Portfolio</title>
 
-    <link rel="icon" href="/public/images/coffee.ico" type="image/x-icon">
+    <link rel="icon" href="/public/images/coffee.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="/public/style.css">
-    <script src="public/script.js" defer=""></script>
+    <script src="public/script.js" defer></script>
 </head>
 
 <body style="background: #e7bd7e">
@@ -26,39 +26,53 @@
 
 <div class="projects_container">
         <div class="project">
+            <div class="project_header" onclick="toggleDisplay('server_admin')">
+                <h3>Server Admin</h3>
+                <img src="public/images/web_server.png"/>
+            </div>
+            <p id=server_admin style="display: none;">◦ Built and maintained 2 Linux-based servers supporting 19+ concurrent remote users        <br><br>◦ Configured NAT, port forwarding, and firewall policies to securely expose internal services        <br><br>◦ Managed 3.1 GB of server data; maintained 99%+ uptime; resolved 4+ technical incidents</p>
+        </div>
+        <div class="project">
+            <div class="project_header" onclick="toggleDisplay('sea_otter')">
+                <h3>Swim Instructor</h3>
+                <img src="public/images/sea_otter.png"/>
+            </div>
+            <p id=sea_otter style="display: none;">◦ Led multi-family instructional sessions with groups of 2-6 parents and their children; guided parents in foundational swim training techniques        <br><br>◦ Taught 33+ students per week - including special needs students, children, and adults        <br><br>◦ Recognized for parent satisfaction and perfect attendance</p>
+        </div>
+        <div class="project">
             <div class="project_header" onclick="toggleDisplay('wujo_transpac')">
                 <h3>Tech Support</h3>
-                <img src="public/images/security_camera.png">
+                <img src="public/images/security_camera.png"/>
             </div>
-            <p id="wujo_transpac" style="display: none;">I provided tech support at Wujo Transpac and was responsible for           diagnosing and resolving technical issues that customers encountered in           products. <br><br>          Some of the products I provided support on included the CG6S smart           battery camera and an automated litterbox.</p>
+            <p id=wujo_transpac style="display: none;">I provided tech support at Wujo Transpac and was responsible for           diagnosing and resolving technical issues that customers encountered in           products. <br><br>          Some of the products I provided support on included the CG6S smart           battery camera and an automated litterbox.</p>
         </div>
         <div class="project">
             <div class="project_header" onclick="toggleDisplay('myte_project')">
                 <h3>Portfolio Website</h3>
-                <img src="public/images/mountain_cropped.png">
+                <img src="public/images/mountain_cropped.png"/>
             </div>
-            <p id="myte_project" style="display: none;">            The website you're looking at now! Built using node.js            and handlebars, 'Myte' acts as a simple website portfolio            that displays all my projects and experiences.            <br><br>            Myte is a mashup of the words <u>My</u> and Si<u>te</u>.</p>
+            <p id=myte_project style="display: none;">            The website you're looking at now! Built using node.js            and handlebars, 'Myte' acts as a simple website portfolio            that displays all my projects and experiences.            <br><br>            Myte is a mashup of the words <u>My</u> and Si<u>te</u>.</p>
         </div>
         <div class="project">
             <div class="project_header" onclick="toggleDisplay('ss_project')">
-                <h3>ML &amp; Databases</h3>
-                <img src="public/images/dollar_sign.png">
+                <h3>ML & Databases</h3>
+                <img src="public/images/dollar_sign.png"/>
             </div>
-            <p id="ss_project" style="display: none;">My project Saving Sergeant acts as a proof-of-concept for a             receipt-scanning and receipt-analyzing software whose             aim is to provide financial insights into users' spending             habits.            <br><br>            This is done by preprocessing images of receipts,             scanning them with Tesseract OCR, and storing them in a csv             file that can then be read into a SQL database.<br>Analysis is             then performed with an SQL database to provide insights             into the user's spending habits.            <br><br>            See the project <a href="https://github.com/hasec-rainn/Saving_Sergeant"><u>here</u></a> on github.</p>
+            <p id=ss_project style="display: none;">My project Saving Sergeant acts as a proof-of-concept for a             receipt-scanning and receipt-analyzing software whose             aim is to provide financial insights into users' spending             habits.            <br><br>            This is done by preprocessing images of receipts,             scanning them with Tesseract OCR, and storing them in a csv             file that can then be read into a SQL database.<br>Analysis is             then performed with an SQL database to provide insights             into the user's spending habits.            <br><br>            See the project <a href='https://github.com/hasec-rainn/Saving_Sergeant'><u>here</u></a> on github.</p>
         </div>
         <div class="project">
             <div class="project_header" onclick="toggleDisplay('csteps')">
                 <h3>Fullstack Developer</h3>
-                <img src="public/images/csteps_logo.png">
+                <img src="public/images/csteps_logo.png"/>
             </div>
-            <p id="csteps" style="display: none;">At ClimateSteps, I acted as a Fullstack Developer Intern.          <br><br>          I increased post content by 150% and enabled Climate Step's partnership          with Earth Hero by developing a synced webservice that pulls in data from          Earth Hero's Airtable.          <br><br>          Additionally, I co-designed 'Steps Coach': a search tool designed to find          personalized climate actions for individuals.</p>
+            <p id=csteps style="display: none;">At ClimateSteps, I acted as a Fullstack Developer Intern.          <br><br>          I increased post content by 150% and enabled Climate Step's partnership          with Earth Hero by developing a synced webservice that pulls in data from          Earth Hero's Airtable.          <br><br>          Additionally, I co-designed 'Steps Coach': a search tool designed to find          personalized climate actions for individuals.</p>
         </div>
         <div class="project">
             <div class="project_header" onclick="toggleDisplay('visiting_angels')">
                 <h3>Caregiver</h3>
-                <img src="public/images/va_logo.png">
+                <img src="public/images/va_logo.png"/>
             </div>
-            <p id="visiting_angels" style="display: none;">At Visiting Angels, I acted as a caregiver for the elderly           and disabled.          <br><br>          My primary duties included providing hospice care, driving clients,          administering medication, providing companionship,          aiding in self-ambulation, cleaning and dressing clients,          and ensuring the general well-being of clients.</p>
+            <p id=visiting_angels style="display: none;">At Visiting Angels, I acted as a caregiver for the elderly           and disabled.          <br><br>          My primary duties included providing hospice care, driving clients,          administering medication, providing companionship,          aiding in self-ambulation, cleaning and dressing clients,          and ensuring the general well-being of clients.</p>
         </div>
 </div>
     
