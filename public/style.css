@@ -1,5 +1,6 @@
 :root {
     --body-font-size: 1.4rem;
+    --about-spacing-const: 1.25vw;
     --nav-font-size: 3.5vmin;
     --pri-header-size: 17vmin;
     --sec-header-size: 13vmin;
@@ -13,7 +14,7 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-@media (orientation: portrait) {
+@media not (hover:hover) {
     :root {
         --nav-font-size: 10vmin;
         --body-font-size: 5vmin;
@@ -27,7 +28,7 @@ a {
 }
 
 p.about {
-    padding-left: 10vw;
+    padding-left: var(--about-spacing-const);
     padding-right: 10vw;
 }
 
@@ -50,7 +51,7 @@ h1 {
     text-align: center;
 }
 
-@media (orientation: portrait) {
+@media not (hover:hover) {
     h1 {
         font-size: 200%;
     }
@@ -100,8 +101,9 @@ img.about {
     float: left;
     height: 55vh;
     width: auto;
-    margin-right: 1vw;
-    margin-bottom: 1vw;
+    margin-right: var(--about-spacing-const);
+    margin-bottom: var(--about-spacing-const);
+    margin-left: var(--about-spacing-const);
     max-width: 100%;
 }
 
@@ -113,7 +115,7 @@ img.title_card {
     width: auto;
 }
 
-@media (orientation: portrait) {
+@media not (hover: hover) {
     img.title_card {
         width: 100vmin;
         height: auto;
@@ -150,7 +152,7 @@ p.dark {
     width: 35%;
 }
 
-@media (orientation: portrait) {
+@media not (hover:hover) {
     .project {
         width: 60%;
     }
@@ -205,7 +207,7 @@ p.dark {
     margin-top: 7.5%;
 }
 
-@media (orientation: portrait) {
+@media not (hover: hover) {
     .quote-container {
         margin-left: 10%;
         margin-top: 20%;
