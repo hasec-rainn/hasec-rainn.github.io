@@ -1,5 +1,6 @@
+const { promises } = require('dns');
 const express = require('express');
-const {readFileSync} = require('fs');
+const fs = require('fs');
 const Handlebars = require("handlebars");
 const app = express();
 const port = 3000;
@@ -10,7 +11,7 @@ var options = {root: __dirname + "/public/"};
 app.get('/', (req, res) => {
   
   //read the main handlebars file in and make it a template
-  m = readFileSync(
+  m = fs.readFileSync(
     'public/templates/home.handlebars',
     "utf8", 
     (err, data) => {return data;}
@@ -25,25 +26,31 @@ app.get('/', (req, res) => {
   };
 
   //write in the home page and navbar into our object
-  hb_data.body = readFileSync(
+  hb_data.body = fs.readFileSync(
     'public/html/home.html',
     "utf8", 
     (err, data) => {return data;}
   );
-  hb_data.navbar  = readFileSync(
+  hb_data.navbar  = fs.readFileSync(
     'public/html/navbar_home.html',
     "utf8", 
     (err, data) => {return data;}
   );
 
   //send our filled-out template
-  res.send(template(hb_data));
+  page = template(hb_data)
+  console.log(page)
+  res.send(page);
+
+  //store our template in the "handlebar_exports" folder
+  fs.writeFileSync("public/html/handlebar_exports/home.html",page);
+
 });
 
 app.get('/about', (req, res) => {
   
   //read the main handlebars file in and make it a template
-  m = readFileSync(
+  m = fs.readFileSync(
     'public/templates/main.handlebars',
     "utf8", 
     (err, data) => {return data;}
@@ -58,25 +65,30 @@ app.get('/about', (req, res) => {
   };
 
   //write in the about page and navbar into our object
-  hb_data.body = readFileSync(
+  hb_data.body = fs.readFileSync(
     'public/html/about.html',
     "utf8", 
     (err, data) => {return data;}
   );
-  hb_data.navbar  = readFileSync(
+  hb_data.navbar  = fs.readFileSync(
     'public/html/navbar.html',
     "utf8", 
     (err, data) => {return data;}
   );
 
   //send our filled-out template
-  res.send(template(hb_data));
+  page = template(hb_data);
+  console.log(page)
+  res.send(page);
+
+  //store our template in the "handlebar_exports" folder
+  fs.writeFileSync("public/html/handlebar_exports/about.html",page);
 });
 
 app.get('/projects', (req, res) => {
   
   //read the main handlebars file in and make it a template
-  m = readFileSync(
+  m = fs.readFileSync(
     'public/templates/main.handlebars',
     "utf8", 
     (err, data) => {return data;}
@@ -91,7 +103,7 @@ app.get('/projects', (req, res) => {
   };
 
   //read in the projects page handlebars file and make it a template
-  p_page = readFileSync(
+  p_page = fs.readFileSync(
     'public/templates/project_page.handlebars',
     "utf8", 
     (err, data) => {return data;}
@@ -186,14 +198,19 @@ app.get('/projects', (req, res) => {
   hb_data.body = project_template(p_data);
 
   //write in the navbar into our object
-  hb_data.navbar  = readFileSync(
+  hb_data.navbar  = fs.readFileSync(
     'public/html/navbar.html',
     "utf8", 
     (err, data) => {return data;}
   );
 
   //send our filled-out template
-  res.send(main_template(hb_data));
+  page = main_template(hb_data);
+  console.log(page);
+  res.send(page);
+
+  //store our template in the "handlebar_exports" folder
+  fs.writeFileSync("public/html/handlebar_exports/projects.html",page);
 });
 
 app.get('/cat', (req, res) => {
@@ -249,5 +266,5 @@ app.get('/public/images/web_server.png', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`Portfolio listening on port ${port}`)
 });
